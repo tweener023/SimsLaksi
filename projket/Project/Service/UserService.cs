@@ -6,24 +6,29 @@
 using System;
 using System.Collections.Generic;
 using Model;
+using Repository;
 
 namespace Service
 {
    public class UserService
    {
-      public bool Login(string jmbg, string password)
+        private UserRepository userRepository = new UserRepository();
+
+        public bool Login(string jmbg, string password)
       {
          throw new NotImplementedException();
       }
       
-      public bool RegisterPatient(string jmbg, string email, string password, string firstName, string lastName, string phone)
+      public void RegisterPatient(string jmbg, string email, string password, string firstName, string lastName, string phone)
       {
-         throw new NotImplementedException();
-      }
+            User newUser = new User(jmbg, email, password, firstName, lastName, phone,0);
+
+            userRepository.RegisterPatient(newUser);
+        }
       
       public List<User> GetAllPatients()
       {
-         throw new NotImplementedException();
-      }
+            return userRepository.GetAllPatients();
+        }
    }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,30 @@ namespace Project
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            DoctorMain n = new DoctorMain();
+            n.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            PatientMain n = new PatientMain();
+            n.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            PharmacistMain n = new PharmacistMain();
+            n.Show();
         }
     }
 }

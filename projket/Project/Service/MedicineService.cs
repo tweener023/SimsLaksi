@@ -6,11 +6,13 @@
 using System;
 using System.Collections.Generic;
 using Model;
+using Repository;
 
 namespace Service
 {
    public class MedicineService
    {
+        MedicineRepository medicineRepository = new MedicineRepository();
       public List<Medicine> GetAll()
       {
          throw new NotImplementedException();
@@ -23,10 +25,10 @@ namespace Service
       
       public List<Medicine> GetByValidation(bool validation)
       {
-         throw new NotImplementedException();
-      }
-      
-      public void AcceptMedicine()
+            return medicineRepository.GetByValidation(validation);
+        }
+
+        public void AcceptMedicine()
       {
          throw new NotImplementedException();
       }

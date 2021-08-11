@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Controller;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +21,32 @@ namespace Project.View
     /// </summary>
     public partial class DoctorMain : Window
     {
+        private UserController userController = new UserController();
+        private MedicineController medicineController = new MedicineController();
+
         public DoctorMain()
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            List<User> patientsToShow = userController.GetAllPatients();
+            patientsDataGrid.ItemsSource = patientsToShow;
+
+            List<Medicine> waitingMedicine = medicineController.GetByValidation(false); // trebaju nam ovi koji jos nisu prihvaceni
+            waitingMedicineDataGrid.ItemsSource = waitingMedicine;
         }
 
-        private void ingerdientsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string jmbg = jmbgBox.Text;
+            string email = emailBox.Text;
+            string password = passwordBox.Text;
+            string firstname = firstnameBox.Text;
+            string lastname = lastnameBox.Text;
+            string phone = phoneBox.Text;
 
+            userController.RegisterPatient(jmbg, email, password, firstname, lastname, phone);
         }
+
     }
 }

@@ -6,11 +6,13 @@
 using System;
 using System.Collections.Generic;
 using Model;
+using Service;
 
 namespace Controller
 {
    public class MedicineController
    {
+        MedicineService medicineService = new MedicineService();
       public List<Medicine> GetAll()
       {
          throw new NotImplementedException();
@@ -23,10 +25,11 @@ namespace Controller
       
       public List<Medicine> GetByValidation(bool validation)
       {
-         throw new NotImplementedException();
-      }
-      
-      public void AcceptMedicine()
+            return medicineService.GetByValidation(validation);
+
+        }
+
+        public void AcceptMedicine()
       {
          throw new NotImplementedException();
       }

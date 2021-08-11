@@ -1,0 +1,91 @@
+﻿[
+  {
+    "code": "AF345612",
+    "name": "Brufen",
+    "manufacturer": "Braca i Sinovi",
+    "price": 12.43,
+    "amount": 14,
+    "ingredients": [
+      {
+        "name": "Opasan sastojak1",
+        "description": "Lorem ipsum nananana...."
+      },
+      {
+        "name": "Opasan sastojak2",
+        "description": "Lorem ipsum nananana...."
+
+      },
+      {
+        "name": "Opasan sastojak3",
+        "description": "Lorem ipsum nananana...."
+      }
+    ],
+    "accepted": true,
+    "deleted": false
+  },
+  {
+    "code": "DFSJU94021BKJ",
+    "name": "Skopril",
+    "manufacturer": "Braca i Sinovi",
+    "price": 22.77,
+    "amount": 9,
+    "ingredients": [
+      {
+        "name": "Skopril sastojak1",
+        "description": "Lorem ipsum nananana...."
+      },
+      {
+        "name": "Skopril sastojak2",
+        "description": "Lorem ipsum nananana...."
+      },
+      {
+        "name": "Skopril sastojak3",
+        "description": "Lorem ipsum nananana...."
+      }
+    ],
+    "accepted": true,
+    "deleted": false
+  },
+  {
+    "code": "HFDA7HJ432KB",
+    "name": "Jabuka",
+    "manufacturer": "Vocnjak",
+    "price": 5.43,
+    "amount": 27,
+    "ingredients": [
+      {
+        "name": "Opasan sastojak1",
+        "description": "Lorem ipsum nananana...."
+      },
+      {
+        "name": "Opasan sastojak2",
+        "description": "Lorem ipsum nananana...."
+      }
+    ],
+    "accepted": false,
+    "deleted": false
+  },
+  {
+    "code": "GFJ4312H41",
+    "name": "Panklav",
+    "manufacturer": "Braca i Sinovi",
+    "price": 19.43,
+    "amount": 54,
+    "ingredients": [
+      {
+        "name": "Panklav sastojak1",
+        "description": "Lorem ipsum nananana...."
+      },
+      {
+        "name": "Panklav sastojak2",
+        "description": "Lorem ipsum nananana...."
+      },
+      {
+        "name": "Panklav sastojak3",
+        "description": "Lorem ipsum nananana...."
+      }
+    ],
+    "accepted": false,
+    "deleted": false
+  }
+]

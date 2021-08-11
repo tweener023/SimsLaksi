@@ -106,35 +106,78 @@
                     <StackPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">JMBG:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name ="jmbgBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">Email:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name ="emailBox"  Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">Šifra:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name ="passwordBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">Ime:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name="firstnameBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">Prezime:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name ="lastnameBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">Broj telefona:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name="phoneBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0"  />
                         </DockPanel>
-                        <Button Content="Dodaj" Width="70" HorizontalAlignment="Left" Background="Green" Margin="5"/>
+                        <Button Content="Dodaj" Width="70" HorizontalAlignment="Left" Background="Green" Margin="5" Click="Button_Click"/>
                     </StackPanel>
+                    <DataGrid x:Name="patientsDataGrid" 
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True" Width="369" 
+                        HorizontalAlignment="Left"
+                        Margin="361,5,0,15">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="JMBG"
+                                Binding="{Binding Jmbg}" />
+                            <DataGridTextColumn Header="First Name"
+                                Binding="{Binding FirstName}" />
+                            <DataGridTextColumn Header="Last Name"
+                                Binding="{Binding LastName}" />
+                            <DataGridTextColumn Header="Email"
+                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Phone"
+                                Binding="{Binding Phone}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Prihvati/odbij lek">
                 <Grid Background="#FFE5E5E5">
-
+                    <StackPanel>
+                        <Label Content="Lekovi koji cekaju da budu prihvaceni: " />
+                        <DataGrid x:Name="waitingMedicineDataGrid"
+                                AutoGenerateColumns="False"
+                                IsReadOnly="True" Margin="5" Width="369" Height="190" HorizontalAlignment="Left">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Code"
+                                Binding="{Binding Code}" />
+                                <DataGridTextColumn Header="Name"
+                                Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="Manufacturer"
+                                Binding="{Binding Manufacturer}" />
+                                <DataGridTextColumn Header="Price"
+                                Binding="{Binding Price}" />
+                                <DataGridTextColumn Header="Amount"
+                                Binding="{Binding Amount}" />
+                                <DataGridTextColumn Header="Ingredients"
+                                Binding="{Binding Ingredients}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <TextBox Width="370" Height="40" HorizontalAlignment="Left" Text="Razlog odbijanja..."/>
+                        <DockPanel>
+                            <Button Background="Green" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Prihvati"  />
+                            <Button Background="Red" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Odbij" />
+                        </DockPanel>
+                    </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>

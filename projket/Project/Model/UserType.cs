@@ -7,11 +7,16 @@ using System;
 
 namespace Model
 {
-   public class UserType
-   {
-      //private enum pharmacist;
-     // private enum patient;
-    //  private enum doctor;
    
-   }
-}
+   
+        //private enum pharmacist;
+        // private enum patient;
+        //  private enum doctor;
+        public enum UserType
+        {
+            patient,
+            doctor,
+            pharmacist
+        }
+
+    }

@@ -8,14 +8,72 @@ using System;
 namespace Model
 {
    public class User
-   {
-      private string jmbg;
-      private string email;
-      private string password;
-      private string firstName;
-      private string lastName;
-      private string phone;
-      private UserType userType;
-   
-   }
+    {
+        public User(string jmbg, string email, string password, string firstName, string lastName, string phone, UserType userType)
+        {
+            this.Jmbg = jmbg;
+            this.Email = email;
+            this.Password = password;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Phone = phone;
+            this.UserType = userType;
+        }
+
+
+        public String Jmbg
+        {
+            get
+            ;
+            set
+            ;
+        }
+        public String Email
+        {
+            get
+            ;
+            set
+            ;
+        }
+        public String Password
+        {
+            get
+            ;
+            set
+            ;
+        }
+
+        public String FirstName
+        {
+            get
+            ;
+            set
+            ;
+        }
+
+        public String LastName
+        {
+            get
+            ;
+            set
+            ;
+        }
+
+        public String Phone
+        {
+            get
+            ;
+            set
+            ;
+        }
+
+        public UserType UserType
+        {
+            get
+            ;
+            set
+            ;
+        }
+    }
+
 }

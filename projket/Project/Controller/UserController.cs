@@ -6,24 +6,26 @@
 using System;
 using System.Collections.Generic;
 using Model;
+using Service;
 
 namespace Controller
 {
    public class UserController
    {
+        private UserService userService = new UserService();
       public bool Login(string jmbg, string password)
       {
          throw new NotImplementedException();
       }
       
-      public bool RegisterPatient(string jmbg, string email, string password, string firstName, string lastName, string phone)
+      public void RegisterPatient(string jmbg, string email, string password, string firstName, string lastName, string phone)
       {
-         throw new NotImplementedException();
+            userService.RegisterPatient(jmbg,email,password,firstName,lastName,phone);
       }
       
       public List<User> GetAllPatients()
       {
-         throw new NotImplementedException();
+            return userService.GetAllPatients();
       }
       
       
