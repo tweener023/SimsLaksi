@@ -1,6 +1,6 @@
 [
   {
-    "Jmbg": "28403214809324",
+    "Jmbg": "1",
     "Email": "marko@email.com",
     "Password": "abc",
     "FirstName": "Marko",
@@ -9,7 +9,7 @@
     "UserType": 0
   },
   {
-    "Jmbg": "28403214809324",
+    "Jmbg": "2",
     "Email": "fdafsdfsd@email.com",
     "Password": "abc",
     "FirstName": "fdsafads",
@@ -18,7 +18,7 @@
     "UserType": 1
   },
   {
-    "Jmbg": "28403214809324",
+    "Jmbg": "3",
     "Email": "pharmacist@email.com",
     "Password": "abc",
     "FirstName": "Apotekar",

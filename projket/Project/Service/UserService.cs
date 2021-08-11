@@ -30,5 +30,10 @@ namespace Service
       {
             return userRepository.GetAllPatients();
         }
-   }
+
+        internal User GetByJmbg(string jmbg)
+        {
+            return userRepository.GetByJmbg(jmbg);
+        }
+    }
 }

@@ -27,7 +27,10 @@ namespace Controller
       {
             return userService.GetAllPatients();
       }
-      
-      
-   }
+
+        public User GetByJmbg(string jmbg)
+        {
+            return userService.GetByJmbg(jmbg);
+        }
+    }
 }

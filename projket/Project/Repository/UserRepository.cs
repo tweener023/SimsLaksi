@@ -40,6 +40,12 @@ namespace Repository
             return _objects.FindAll(obj => obj.UserType == 0);
         }
 
+        internal User GetByJmbg(string jmbg)
+        {
+            ReadJson();
+            return _objects.Find(obj => obj.Jmbg == jmbg);
+        }
+
         private void ReadJson()
         {
             if (!File.Exists(_fileLocation))
