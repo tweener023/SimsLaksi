@@ -16,7 +16,7 @@ namespace Repository
         string _fileLocation;
         private List<Medicine> _objects = new List<Medicine>();
 
-
+        IngredientRepository ingredientRepository = new IngredientRepository();
 
         public MedicineRepository()
         {
@@ -43,17 +43,27 @@ namespace Repository
             return _objects.FindAll(obj => obj.Accepted == validation);
         }
 
+       public Medicine UpdateMedicine(Medicine medToUpdate)
+        {
+            int index = _objects.FindIndex(obj => obj.Code == medToUpdate.Code);
+            _objects[index] = medToUpdate;
+            WriteToJson();
+            return medToUpdate;
+        }
 
         public void AcceptMedicine()
       {
          throw new NotImplementedException();
       }
       
-      public void DeleteMedicine()
+      public void DeleteMedicine(Medicine medicine)
       {
-         throw new NotImplementedException();
+            Medicine med = _objects.Find(obj => obj.Code == medicine.Code);
+            med.Deleted = true;
+            UpdateMedicine(med);
+            WriteToJson(); // mozda je ovo suvisan write
       }
-      
+
       public void RejectMedicine()
       {
          throw new NotImplementedException();
@@ -64,10 +74,22 @@ namespace Repository
          throw new NotImplementedException();
       }
       
-      public void CreateMedicine(string code, string name, string manufacturer, float price, int amount, List<Ingredient> ingredients)
+      public void CreateMedicine(Medicine medicine)
       {
-         throw new NotImplementedException();
-      }
+            // kada se lek doda u json, moramo promeniti i ingredients count za svaki od ingredientsa koji se pojavljuje u novounetom leku
+            _objects.Add(medicine);
+            WriteToJson();
+
+            // ovo proveri da li je dobro
+            // ovo da bude u servisu
+            foreach (var ing in medicine.Ingredients)
+            {
+                ing.CountInMedicines++;
+                ingredientRepository.UpdateIngredient(ing);
+                WriteToJson();
+            }
+
+        }
 
         private void ReadJson()
         {

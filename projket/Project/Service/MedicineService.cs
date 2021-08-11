@@ -28,9 +28,10 @@ namespace Service
             return medicineRepository.GetByValidation(validation);
         }
 
-        public void AcceptMedicine()
+        public void AcceptMedicine(Medicine medicine)
       {
-         throw new NotImplementedException();
+            medicine.Accepted = true;
+            medicineRepository.UpdateMedicine(medicine);
       }
       
       public void DeleteMedicine()

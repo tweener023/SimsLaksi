@@ -6,15 +6,16 @@
 using System;
 using System.Collections.Generic;
 using Model;
+using Service;
 
 namespace Controller
 {
    public class IngredientController
    {
+        IngredientService ingredientService = new IngredientService();
       public List<Ingredient> GetAll()
       {
-         throw new NotImplementedException();
-      }
+            return ingredientService.GetAll();      }
       
       public List<Ingredient> SearchIngredient()
       {

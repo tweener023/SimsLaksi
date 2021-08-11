@@ -23,6 +23,14 @@ namespace Project.View
     {
         private UserController userController = new UserController();
         private MedicineController medicineController = new MedicineController();
+        private IngredientController ingredientController = new IngredientController();
+
+
+        List<Ingredient> ingredientsToShow;
+        List<Medicine> acceptedMedicine;
+        List<Medicine> waitingMedicine;
+
+
 
         public DoctorMain()
         {
@@ -32,8 +40,14 @@ namespace Project.View
             List<User> patientsToShow = userController.GetAllPatients();
             patientsDataGrid.ItemsSource = patientsToShow;
 
-            List<Medicine> waitingMedicine = medicineController.GetByValidation(false); // trebaju nam ovi koji jos nisu prihvaceni
+            waitingMedicine = medicineController.GetByValidation(false); // trebaju nam ovi koji jos nisu prihvaceni
             waitingMedicineDataGrid.ItemsSource = waitingMedicine;
+
+            acceptedMedicine = medicineController.GetByValidation(true); // trebaju nam ovi koji jos nisu prihvaceni
+            medicineDataGrid.ItemsSource = acceptedMedicine;
+
+            ingredientsToShow = ingredientController.GetAll();
+            ingredientsDataGrid.ItemsSource = ingredientsToShow;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -48,5 +62,152 @@ namespace Project.View
             userController.RegisterPatient(jmbg, email, password, firstname, lastname, phone);
         }
 
+
+        private void onSearchMedicineByCode(object sender, RoutedEventArgs e)
+        {
+            if (searchByCode.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Medicine> acceptedMedicinesByCode = new List<Medicine>();
+            foreach (var m in acceptedMedicine)
+            {
+                if (m.Code.ToLower().Contains(searchByCode.Text.ToLower()))
+                {
+                    acceptedMedicinesByCode.Add(m);
+                }
+            }
+            medicineDataGrid.ItemsSource = acceptedMedicinesByCode;
+        }
+
+        private void onSearchMedicineByName(object sender, RoutedEventArgs e)
+        {
+
+            if (searchByName.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Medicine> acceptedMedicinesByName = new List<Medicine>();
+            foreach (var m in acceptedMedicine)
+            {
+                if (m.Name.ToLower().Contains(searchByName.Text.ToLower()))
+                {
+                    acceptedMedicinesByName.Add(m);
+                }
+            }
+            medicineDataGrid.ItemsSource = acceptedMedicinesByName;
+        }
+
+        private void onSearchMedicineByManufacturer(object sender, RoutedEventArgs e)
+        {
+            if (searchByManufacturer.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Medicine> acceptedMedicinesByMnf = new List<Medicine>();
+            foreach (var m in acceptedMedicine)
+            {
+                if (m.Manufacturer.ToLower().Contains(searchByManufacturer.Text.ToLower()))
+                {
+                    acceptedMedicinesByMnf.Add(m);
+                }
+            }
+            medicineDataGrid.ItemsSource = acceptedMedicinesByMnf;
+        }
+
+        private void onSearchMedicineByPrice(object sender, RoutedEventArgs e)
+        {
+            if (searchByPriceFrom.Text == "" || searchByPriceTo.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+            List<Medicine> acceptedMedicinesByPrice = new List<Medicine>();
+            foreach (var m in acceptedMedicine)
+            {
+                if (m.Price > float.Parse(searchByPriceFrom.Text) && m.Price < float.Parse(searchByPriceTo.Text))
+                {
+                    acceptedMedicinesByPrice.Add(m);
+                }
+            }
+            medicineDataGrid.ItemsSource = acceptedMedicinesByPrice;
+        }
+
+        private void onSearchMedicineByAmount(object sender, RoutedEventArgs e)
+        {
+            if (searchByAmount.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Medicine> acceptedMedicinesByAmount = new List<Medicine>();
+            foreach (var m in acceptedMedicine)
+            {
+                if (m.Amount == Int32.Parse(searchByAmount.Text))
+                {
+                    acceptedMedicinesByAmount.Add(m);
+                }
+            }
+            medicineDataGrid.ItemsSource = acceptedMedicinesByAmount;
+        }
+
+        private void onSearchMedicineByIngredients(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void onAcceptMedicine(object sender, RoutedEventArgs e)
+        {
+            Medicine medToUp = (Medicine)waitingMedicineDataGrid.SelectedItem;
+            medicineController.AcceptMedicine(medToUp);
+        }
+
+        private void onRejectMedicine(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void onSearchIngredientByName(object sender, RoutedEventArgs e)
+        {
+            if (searchIngredientByName.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Ingredient> ingredientsByName = new List<Ingredient>();
+            foreach (var i in ingredientsToShow)
+            {
+                if (i.Name.ToLower().Contains(searchIngredientByName.Text.ToLower()))
+                {
+                    ingredientsByName.Add(i);
+                }
+            }
+            ingredientsDataGrid.ItemsSource = ingredientsByName;
+        }
+
+        private void onSearchIngredientByDescription(object sender, RoutedEventArgs e)
+        {
+            if (searchIngredientByDescription.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Ingredient> ingredientsByDesc = new List<Ingredient>();
+            foreach (var i in ingredientsToShow)
+            {
+                if (i.Description.ToLower().Contains(searchIngredientByDescription.Text.ToLower()))
+                {
+                    ingredientsByDesc.Add(i);
+                }
+            }
+
+            ingredientsDataGrid.ItemsSource = ingredientsByDesc;
+        }
+        private void onSearchIngredientByMedicine(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

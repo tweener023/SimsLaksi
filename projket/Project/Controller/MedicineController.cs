@@ -29,12 +29,12 @@ namespace Controller
 
         }
 
-        public void AcceptMedicine()
+        public void AcceptMedicine(Medicine medicine)
       {
-         throw new NotImplementedException();
-      }
-      
-      public void DeleteMedicine()
+            medicineService.AcceptMedicine(medicine);
+        }
+
+        public void DeleteMedicine()
       {
          throw new NotImplementedException();
       }
