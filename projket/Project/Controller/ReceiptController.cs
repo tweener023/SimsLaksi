@@ -6,17 +6,28 @@
 using System;
 using System.Collections.Generic;
 using Model;
+using Service;
 
 namespace Controller
 {
    public class ReceiptController
    {
-      public List<Receipt> GetAll(string userJmbg)
-      {
+        private ReceiptService receiptService = new ReceiptService();
+
+        public List<Receipt> GetAll(string userJmbg)
+        {
          throw new NotImplementedException();
-      }
-      
-     
-   
-   }
+        }
+
+        public List<Receipt> GetByUserJmbg(string userJmbg)
+        {
+            return receiptService.GetByUserJmbg(userJmbg);
+        }
+
+
+        public void CreateReceipt(Receipt receipt)
+        {
+            receiptService.CreateReceipt(receipt);
+        }
+    }
 }

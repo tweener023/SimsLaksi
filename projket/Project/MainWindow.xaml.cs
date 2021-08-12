@@ -43,7 +43,7 @@ namespace Project
         {
            // this.Hide();
 
-            PatientMain n = new PatientMain();
+            PatientMain n = new PatientMain(logedUser);
             n.Show();
         }
 
@@ -81,7 +81,7 @@ namespace Project
                 if (logedUser.UserType == 0)
                 {
                     this.Hide();
-                    PatientMain patientMain = new PatientMain();
+                    PatientMain patientMain = new PatientMain(logedUser);
                     patientMain.Show();
                 }
                 else if (logedUser.UserType == (UserType)1)

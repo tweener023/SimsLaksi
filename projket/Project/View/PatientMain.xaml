@@ -7,6 +7,130 @@
         mc:Ignorable="d"
         Title="PatientMain" Height="450" Width="800">
     <Grid>
-        
+        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
+
+
+
+
+            <TabItem Header="Lekovi">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="125*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.ColumnSpan="2">
+                        <DockPanel Margin="5">
+                            <Label Width="150">Pretraži po šifri:</Label>
+                            <TextBox x:Name="searchByCode" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">5452</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByCode"/>
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Pretraži po imenu:</Label>
+                            <TextBox x:Name="searchByName" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByName"/>
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Pretraži po proizvođaču:</Label>
+                            <TextBox x:Name="searchByManufacturer" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Idk</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByManufacturer"/>
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Pretraži po ceni:</Label>
+                            <TextBox x:Name="searchByPriceFrom" Width="80" HorizontalAlignment="Left" Margin="5,0,0,0">From</TextBox>
+                            <TextBox x:Name="searchByPriceTo" Width="80" HorizontalAlignment="Left" Margin="5,0,0,0">To</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByPrice"/>
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Pretraži po količini:</Label>
+                            <TextBox x:Name="searchByAmount" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">15</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByAmount"/>
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Pretraži po sastojcima:</Label>
+                            <TextBox x:Name="searchByIngredients" Width="280" HorizontalAlignment="Left" Margin="5,0,0,0">silicijum-dioksid amp; (magnezijum | kalcijum))</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByIngredients"/>
+                            <TextBox Margin="5,0,0,0" x:Name="medicineAmount" Width="70" />
+
+                            <Button Click="onAddToCart" Width="81" Content="Dodaj u korpu" />
+                            <Button Click="onCheckout" Width="70" Content="Checkout" />
+                        </DockPanel>
+                    </StackPanel>
+                    <DataGrid x:Name="medicineDataGrid"
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True" Margin="10,232,0,20" Width="579" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Šifra"
+                            Binding="{Binding Code}" />
+                            <DataGridTextColumn Header="Ime"
+                            Binding="{Binding Name}" />
+                            <DataGridTextColumn Header="Proizvođač"
+                            Binding="{Binding Manufacturer}" />
+                            <DataGridTextColumn Header="Cena"
+                            Binding="{Binding Price}" />
+                            <DataGridTextColumn Header="Količina"
+                            Binding="{Binding Amount}" />
+                            <DataGridTemplateColumn Header="Sastojci">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ItemsControl ItemsSource="{Binding Ingredients}" DisplayMemberPath="Name"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Sastojci">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock>kopiraj</TextBlock>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Moja korpa">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel>
+                        <ListView ItemsSource="{Binding cartList}" Height="210"  Width="260">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                        <TextBlock Text=", " />
+                                        <TextBlock Text="{Binding Amount}" />
+                                        <!--<TextBlock Text=" (" />
+                                        <TextBlock Text="{Binding Description}" TextDecorations="Underline" Cursor="Hand" />
+                                        <TextBlock Text=")" />-->
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+
+                        <Button Margin="10" Width="70" Height="30" Content="Poruči" Click="onOrder" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Moji recepti">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="receiptsDataGrid"
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True" Margin="10,232,0,20" Width="579" HorizontalAlignment="Left">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Datum"
+                            Binding="{Binding DateAndTime}" />
+                            <DataGridTextColumn Header="Cena"
+                            Binding="{Binding Price}" />
+                            <DataGridTemplateColumn Header="Kupljeni lekovi">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ItemsControl ItemsSource="{Binding MedQty}" DisplayMemberPath="0"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

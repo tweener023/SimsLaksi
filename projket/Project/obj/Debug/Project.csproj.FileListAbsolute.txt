@@ -82,3 +82,5 @@ C:\Users\nikol\Documents\GitHub\nikolajmace\SimsLaksi\projket\Project\obj\Debug\
 C:\Users\nikol\Documents\GitHub\nikolajmace\SimsLaksi\projket\Project\obj\Debug\Project.csproj.GenerateResource.cache
 C:\Users\nikol\Documents\GitHub\nikolajmace\SimsLaksi\projket\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
 C:\Users\nikol\Documents\GitHub\nikolajmace\SimsLaksi\projket\Project\obj\Debug\Project.csproj.CopyComplete
+C:\Users\nikol\Documents\GitHub\nikolajmace\SimsLaksi\projket\Project\obj\Debug\View\Checkout.g.cs
+C:\Users\nikol\Documents\GitHub\nikolajmace\SimsLaksi\projket\Project\obj\Debug\View\Checkout.baml

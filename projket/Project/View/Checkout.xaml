@@ -1,0 +1,40 @@
+﻿<Window x:Class="Project.View.Checkout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project.View"
+        mc:Ignorable="d"
+        Title="Checkout" Height="450" Width="800">
+    <Grid>
+        <!--<ListView ItemsSource="{Binding itemsToShow}" Height="210"  Width="260">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="{Binding Amount}" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+        <StackPanel>
+
+            <DataGrid x:Name="cartDataGrid"
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True" Width="579" Height="250" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ime"
+                            Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Proizvodjac"
+                            Binding="{Binding Manufacturer}" />
+                    <DataGridTextColumn Header="Cena"
+                            Binding="{Binding Price}" />
+                    <DataGridTextColumn Header="Kolicina"
+                            Binding="{Binding Amount}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="Poruci" Click="onOrder" Width="70" Height="30" />
+        </StackPanel>
+    </Grid>
+</Window>

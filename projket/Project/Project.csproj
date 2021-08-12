@@ -68,6 +68,14 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserType.cs" />
     <Compile Include="Repository\IngredientRepository.cs" />
+    <Compile Include="Repository\Interfaces\IIngredientRepository.cs" />
+    <Compile Include="Repository\Interfaces\IMedicineRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReceiptRepository.cs" />
+    <Compile Include="Repository\Interfaces\IUserRepository.cs" />
+    <Compile Include="Service\Interfaces\IIngredientService.cs" />
+    <Compile Include="Service\Interfaces\IMedicineService.cs" />
+    <Compile Include="Service\Interfaces\IReceiptService.cs" />
+    <Compile Include="Service\Interfaces\IUserService.cs" />
     <Compile Include="Repository\MedicineRepository.cs" />
     <Compile Include="Repository\ReceiptRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
@@ -75,6 +83,9 @@
     <Compile Include="Service\MedicineService.cs" />
     <Compile Include="Service\ReceiptService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="View\Checkout.xaml.cs">
+      <DependentUpon>Checkout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DoctorMain.xaml.cs">
       <DependentUpon>DoctorMain.xaml</DependentUpon>
     </Compile>
@@ -96,6 +107,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Checkout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DoctorMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,5 +157,6 @@
   <ItemGroup>
     <None Include="data\ingredients.json" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
