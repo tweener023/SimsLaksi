@@ -29,6 +29,7 @@ namespace Project
         public MainWindow()
         {
             InitializeComponent();
+            counter = 0;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

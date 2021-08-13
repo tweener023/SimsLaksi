@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using System.IO;
 using Model;
 using Newtonsoft.Json;
+using Project.Repository.Interfaces;
 
 namespace Repository
 {
-   public class ReceiptRepository
+   public class ReceiptRepository:IReceiptRepository
    {
 
         string _fileLocation;

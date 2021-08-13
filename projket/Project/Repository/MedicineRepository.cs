@@ -8,15 +8,17 @@ using System.Collections.Generic;
 using System.IO;
 using Model;
 using Newtonsoft.Json;
+using Project.Repository.Interfaces;
 
 namespace Repository
 {
-   public class MedicineRepository
+   public class MedicineRepository:IMedicineRepository
    {
         string _fileLocation;
         private List<Medicine> _objects = new List<Medicine>();
 
-        IngredientRepository ingredientRepository = new IngredientRepository();
+        IngredientRepository ingredientRepository = new IngredientRepository(); // treba mi da bih mogao da updateujem count pojavljivanja
+
 
         public MedicineRepository()
         {
@@ -25,14 +27,14 @@ namespace Repository
         }
 
         public List<Medicine> GetAll()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Medicine> SearchMedicine()
-      {
-         throw new NotImplementedException();
-      }
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Medicine> SearchMedicine()
+        {
+            throw new NotImplementedException();
+        }
 
         public List<Medicine> GetByValidation(bool validation)
         {
@@ -40,42 +42,16 @@ namespace Repository
             // false = trazimo uslov accepted = false
 
             ReadJson();
-            return _objects.FindAll(obj => obj.Accepted == validation);
+            return _objects.FindAll(obj => obj.Accepted == validation && obj.Deleted != true);
         }
 
-       public Medicine UpdateMedicine(Medicine medToUpdate)
+        public void BuyMedicine()
         {
-            int index = _objects.FindIndex(obj => obj.Code == medToUpdate.Code);
-            _objects[index] = medToUpdate;
-            WriteToJson();
-            return medToUpdate;
+            throw new NotImplementedException();
         }
 
-        public void AcceptMedicine()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void DeleteMedicine(Medicine medicine)
-      {
-            Medicine med = _objects.Find(obj => obj.Code == medicine.Code);
-            med.Deleted = true;
-            UpdateMedicine(med);
-            WriteToJson(); // mozda je ovo suvisan write
-      }
-
-      public void RejectMedicine()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void BuyMedicine()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void CreateMedicine(Medicine medicine)
-      {
+        public void CreateMedicine(Medicine medicine)
+        {
             // kada se lek doda u json, moramo promeniti i ingredients count za svaki od ingredientsa koji se pojavljuje u novounetom leku
             _objects.Add(medicine);
             WriteToJson();
@@ -90,6 +66,17 @@ namespace Repository
             }
 
         }
+
+        public Medicine UpdateMedicine(Medicine medToUpdate)
+        {
+            // ReadJson();
+            int index = _objects.FindIndex(obj => obj.Code == medToUpdate.Code);
+            _objects[index] = medToUpdate;
+            WriteToJson();
+            return medToUpdate;
+        }
+
+
 
         private void ReadJson()
         {

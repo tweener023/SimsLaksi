@@ -68,7 +68,7 @@ namespace Project.View
         {
             if (searchByCode.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu sifru.");
             }
 
             List<Medicine> acceptedMedicinesByCode = new List<Medicine>();
@@ -87,7 +87,7 @@ namespace Project.View
 
             if (searchByName.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validno ime.");
             }
 
             List<Medicine> acceptedMedicinesByName = new List<Medicine>();
@@ -105,7 +105,7 @@ namespace Project.View
         {
             if (searchByManufacturer.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Proizvodjac ne sme biti prazan string.");
             }
 
             List<Medicine> acceptedMedicinesByMnf = new List<Medicine>();
@@ -124,7 +124,7 @@ namespace Project.View
         {
             if (searchByPriceFrom.Text == "" || searchByPriceTo.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu cenu.");
             }
             List<Medicine> acceptedMedicinesByPrice = new List<Medicine>();
             foreach (var m in acceptedMedicine)
@@ -140,7 +140,7 @@ namespace Project.View
         {
             if (searchByAmount.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             List<Medicine> acceptedMedicinesByAmount = new List<Medicine>();

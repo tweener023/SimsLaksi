@@ -106,27 +106,27 @@
                     <StackPanel>
                         <DockPanel Margin="5">
                             <Label Width="90">Šifra:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name="registerCodeBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="90">Ime:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name="registerNameBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="90">Proizvođač:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name="registerManufacturerBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="90">Cena:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name="registerPriceBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="90">Količina:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name="registerAmountBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="90">Sastojci:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name="registerIngredientsBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <Button Content="Dodaj" Width="70" HorizontalAlignment="Left" Background="Green" Margin="5"/>
                     </StackPanel>

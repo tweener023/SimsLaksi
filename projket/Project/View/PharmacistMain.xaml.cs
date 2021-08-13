@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Controller;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,39 @@ namespace Project.View
     /// </summary>
     public partial class PharmacistMain : Window
     {
+        MedicineController medicineController = new MedicineController();
+
         public PharmacistMain()
         {
             InitializeComponent();
+            this.DataContext = this;
+        }
+
+        private void onRegisterMedicine(object sender, RoutedEventArgs e)
+        {
+            string code = registerCodeBox.Text;
+            string name = registerNameBox.Text;
+            string manufacturer = registerManufacturerBox.Text;
+
+            string pri = registerPriceBox.Text;
+            float price = float.Parse(pri);
+
+            string amn = registerAmountBox.Text;
+            int amount = Convert.ToInt32(amn);
+
+            string ings = registerIngredientsBox.Text;
+            List<string> ingsString = ings.Split(',').ToList();
+
+            List<Ingredient> ingredients = new List<Ingredient>();
+
+            foreach (var i in ingsString)
+            {
+                var data = new Ingredient(i, "Lorem ipsum....");
+                ingredients.Add(data);
+            }
+
+
+            medicineController.CreateMedicine(code, name, manufacturer, price, amount, ingredients);
         }
     }
 }

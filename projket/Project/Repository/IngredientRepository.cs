@@ -8,12 +8,13 @@ using System.Collections.Generic;
 using System.IO;
 using Model;
 using Newtonsoft.Json;
+using Project.Repository.Interfaces;
 
 namespace Repository
 {
-   public class IngredientRepository
+   public class IngredientRepository:IIngredientRepository
    {
-        String _fileLocation;
+        string _fileLocation;
         private List<Ingredient> _objects = new List<Ingredient>();
 
 
@@ -23,18 +24,25 @@ namespace Repository
             ReadJson();
         }
 
-
-
         public List<Ingredient> GetAll()
-      {
+        {
             ReadJson();
             return _objects;
-      }
-      
-      public List<Ingredient> SearchIngredient()
-      {
-         throw new NotImplementedException();
-      }
+        }
+
+        public Ingredient UpdateIngredient(Ingredient ingredientToUpdate)
+        {
+            ReadJson();
+            int index = _objects.FindIndex(obj => obj.Name == ingredientToUpdate.Name);
+            _objects[index] = ingredientToUpdate;
+            WriteToJson();
+            return ingredientToUpdate;
+        }
+
+        public List<Ingredient> SearchIngredient()
+        {
+            throw new NotImplementedException();
+        }
 
         private void ReadJson()
         {
@@ -58,13 +66,5 @@ namespace Repository
             File.WriteAllText(_fileLocation, json);
         }
 
-         public Ingredient UpdateIngredient(Ingredient ingredientToUpdate)
-        {
-            ReadJson();
-            int index = _objects.FindIndex(obj => obj.Name == ingredientToUpdate.Name);
-            _objects[index] = ingredientToUpdate;
-            WriteToJson();
-            return ingredientToUpdate;
-        }
     }
 }

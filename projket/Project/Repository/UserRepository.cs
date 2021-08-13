@@ -1,6 +1,5 @@
 // File:    UserRepository.cs
 // Author:  User
-// Created: Thursday, June 17, 2021 4:58:15 PM
 // Purpose: Definition of Class UserRepository
 
 using System;
@@ -8,14 +7,14 @@ using System.Collections.Generic;
 using System.IO;
 using Model;
 using Newtonsoft.Json;
+using Project.Repository.Interfaces;
 
 namespace Repository
 {
-   public class UserRepository
+   public class UserRepository:IUserRepository
    {
         string _fileLocation;
         private List<User> _objects = new List<User>();
-
 
         public UserRepository()
         {
@@ -23,28 +22,30 @@ namespace Repository
             ReadJson();
         }
 
-        public bool Login(string jmbg, string password)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void RegisterPatient(User user)
-      {
+        public void RegisterPatient(User user)
+        {
             _objects.Add(user);
             WriteToJson();
         }
-      
-      public List<User> GetAllPatients()
-      {
+
+        public List<User> GetAll()
+        {
+            ReadJson();
+            return _objects;
+        }
+
+        public List<User> GetAllPatients()
+        {
             ReadJson();
             return _objects.FindAll(obj => obj.UserType == 0);
         }
 
-        internal User GetByJmbg(string jmbg)
+        public User GetByJmbg(string jmbg)
         {
             ReadJson();
             return _objects.Find(obj => obj.Jmbg == jmbg);
         }
+
 
         private void ReadJson()
         {

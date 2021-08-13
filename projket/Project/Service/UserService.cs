@@ -6,11 +6,12 @@
 using System;
 using System.Collections.Generic;
 using Model;
+using Project.Repository.Interfaces;
 using Repository;
 
 namespace Service
 {
-   public class UserService
+   public class UserService:IUserService
    {
         private UserRepository userRepository = new UserRepository();
 
@@ -31,9 +32,10 @@ namespace Service
             return userRepository.GetAllPatients();
         }
 
-        internal User GetByJmbg(string jmbg)
+        public User GetByJmbg(string jmbg)
         {
             return userRepository.GetByJmbg(jmbg);
         }
+
     }
 }

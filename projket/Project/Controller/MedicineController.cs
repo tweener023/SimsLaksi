@@ -34,27 +34,27 @@ namespace Controller
             medicineService.AcceptMedicine(medicine);
         }
 
-        public void DeleteMedicine()
+        public void DeleteMedicine(Medicine medicine)
       {
-         throw new NotImplementedException();
-      }
-      
-      public void RejectMedicine()
+            medicineService.DeleteMedicine(medicine);
+        }
+
+        public void RejectMedicine(Medicine medicine)
       {
-         throw new NotImplementedException();
-      }
-      
-      public void BuyMedicine()
+            medicineService.RejectMedicine(medicine);
+        }
+
+        public void BuyMedicine()
       {
          throw new NotImplementedException();
       }
       
       public void CreateMedicine(string code, string name, string manufacturer, float price, int amount, List<Ingredient> ingredients)
       {
-         throw new NotImplementedException();
-      }
-      
-    
-   
-   }
+            medicineService.CreateMedicine(code, name, manufacturer, price, amount, ingredients);
+        }
+
+
+
+    }
 }
