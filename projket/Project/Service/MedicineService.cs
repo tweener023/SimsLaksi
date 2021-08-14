@@ -12,21 +12,25 @@ using Repository;
 namespace Service
 {
    public class MedicineService:IMedicineService
-   {
-        MedicineRepository medicineRepository = new MedicineRepository();
-        public List<Medicine> GetAll()
+    {
+        // MedicineRepository medicineRepository = new MedicineRepository();
+
+        private readonly IMedicineRepository _medicineRepository;
+
+        public MedicineService(IMedicineRepository medicineRepository)
         {
-            throw new NotImplementedException();
+            _medicineRepository = medicineRepository;
         }
 
-        public List<Medicine> SearchMedicine()
+        public List<Medicine> GetAll()
         {
-            throw new NotImplementedException();
+            return _medicineRepository.GetAll();
         }
+
 
         public List<Medicine> GetByValidation(bool validation)
         {
-            return medicineRepository.GetByValidation(validation);
+            return _medicineRepository.GetByValidation(validation);
         }
 
         public void AcceptMedicine(Medicine medicine)
@@ -34,7 +38,7 @@ namespace Service
 
             // Medicine med = _objects.Find(obj => obj.Code == medicine.Code);
             medicine.Accepted = true;
-            medicineRepository.UpdateMedicine(medicine);
+            _medicineRepository.UpdateMedicine(medicine);
             // medicineRepository.AcceptMedicine(medicine);
         }
         public void RejectMedicine(Medicine medicine)
@@ -42,14 +46,14 @@ namespace Service
 
             medicine.Accepted = false;
             medicine.Deleted = true;
-            medicineRepository.UpdateMedicine(medicine);
+            _medicineRepository.UpdateMedicine(medicine);
         }
 
         public void DeleteMedicine(Medicine medicine)
         {
             // ovo je promenjeno proveri da li radi
             medicine.Deleted = true;
-            medicineRepository.UpdateMedicine(medicine);
+            _medicineRepository.UpdateMedicine(medicine);
         }
 
 
@@ -63,7 +67,7 @@ namespace Service
         public void CreateMedicine(string code, string name, string manufacturer, float price, int amount, List<Ingredient> ingredients)
         {
             Medicine newMedicine = new Medicine(code, name, manufacturer, price, amount, ingredients, false, false);
-            medicineRepository.CreateMedicine(newMedicine);
+            _medicineRepository.CreateMedicine(newMedicine);
         }
     }
 }

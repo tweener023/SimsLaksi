@@ -6,20 +6,26 @@
 using System;
 using System.Collections.Generic;
 using Model;
+using Project.Repository.Interfaces;
 using Service;
 
 namespace Controller
 {
-   public class IngredientController
-   {
-        IngredientService ingredientService = new IngredientService();
-      public List<Ingredient> GetAll()
-      {
-            return ingredientService.GetAll();      }
-      
-      public List<Ingredient> SearchIngredient()
-      {
-         throw new NotImplementedException();
-      }
-   }
+    public class IngredientController
+    {
+        // private IngredientService ingredientService = new IngredientService();
+
+        private readonly IIngredientService _ingredientService;
+
+        public IngredientController(IIngredientService ingredientService)
+        {
+            _ingredientService = ingredientService;
+        }
+
+        public List<Ingredient> GetAll()
+        {
+            return _ingredientService.GetAll();
+        }
+    }
+
 }

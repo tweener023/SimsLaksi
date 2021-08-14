@@ -81,7 +81,15 @@
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="130">Pretraga po leku:</Label>
-                            <TextBox x:Name="searchIngredientByMedicine" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
+                            <ComboBox Width="300" x:Name="medicineCombo">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                             <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchIngredientByMedicine"/>
                         </DockPanel>
                     </StackPanel>
@@ -128,7 +136,7 @@
                             <Label Width="70">Broj telefona:</Label>
                             <TextBox x:Name="phoneBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0"  />
                         </DockPanel>
-                        <Button Content="Dodaj" Width="70" HorizontalAlignment="Left" Background="Green" Margin="5" Click="Button_Click"/>
+                        <Button Content="Dodaj" Width="70" HorizontalAlignment="Left" Background="Green" Margin="5" Click="onRegisterPatient"/>
                     </StackPanel>
                     <DataGrid x:Name="patientsDataGrid" 
                         AutoGenerateColumns="False"
@@ -172,7 +180,7 @@
                                 Binding="{Binding Ingredients}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                        <TextBox Width="370" Height="40" HorizontalAlignment="Left" Text="Razlog odbijanja..."/>
+                        <TextBox x:Name="rejectMessage"  Width="370" Height="40" HorizontalAlignment="Left" Text="Razlog odbijanja..."/>
                         <DockPanel>
                             <Button Background="Green" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Prihvati"  />
                             <Button Background="Red" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Odbij" />

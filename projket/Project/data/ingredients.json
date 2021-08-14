@@ -1,1 +1,27 @@
-﻿
+﻿[
+  {
+    "name": "sicilijum-dioksid",
+    "description": "Lorem ipsum nananana....",
+    "countInMedicines": 2
+  },
+  {
+    "name": "magnezijum",
+    "description": "Lorem ipsum nananana....",
+    "countInMedicines": 2
+  },
+  {
+    "name": "kalcijum",
+    "description": "Lorem ipsum nananana....",
+    "countInMedicines": 4
+  },
+  {
+    "name": "taurin",
+    "description": "Lorem ipsum nananana....",
+    "countInMedicines": 1
+  },
+  {
+    "name": "kofein",
+    "description": "Lorem ipsum nananana....",
+    "countInMedicines": 2
+  }
+]

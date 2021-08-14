@@ -21,36 +21,45 @@ namespace Project.View
     /// </summary>
     public partial class DoctorMain : Window
     {
-        private UserController userController = new UserController();
-        private MedicineController medicineController = new MedicineController();
-        private IngredientController ingredientController = new IngredientController();
+        App app = (App)Application.Current;
+
+        //private UserController userController = new UserController();
+        //private MedicineController medicineController = new MedicineController();
+        //private IngredientController ingredientController = new IngredientController();
 
 
         List<Ingredient> ingredientsToShow;
+        List<Medicine> allMedicines;
         List<Medicine> acceptedMedicine;
         List<Medicine> waitingMedicine;
+        List<User> patientsToShow;
 
-
+        bool flag = false;
 
         public DoctorMain()
         {
             InitializeComponent();
             this.DataContext = this;
 
-            List<User> patientsToShow = userController.GetAllPatients();
+            allMedicines = app.medicineController.GetAll();
+
+
+            patientsToShow = app.userController.GetAllPatients();
             patientsDataGrid.ItemsSource = patientsToShow;
 
-            waitingMedicine = medicineController.GetByValidation(false); // trebaju nam ovi koji jos nisu prihvaceni
-            waitingMedicineDataGrid.ItemsSource = waitingMedicine;
-
-            acceptedMedicine = medicineController.GetByValidation(true); // trebaju nam ovi koji jos nisu prihvaceni
+            acceptedMedicine = app.medicineController.GetByValidation(true); // trebaju nam ovi koji su prihvaceni accepted=true
             medicineDataGrid.ItemsSource = acceptedMedicine;
 
-            ingredientsToShow = ingredientController.GetAll();
+            medicineCombo.ItemsSource = acceptedMedicine;
+
+            waitingMedicine = app.medicineController.GetByValidation(false); // trebaju nam ovi koji jos nisu prihvaceni accepted=false
+            waitingMedicineDataGrid.ItemsSource = waitingMedicine;
+
+            ingredientsToShow = app.ingredientController.GetAll();
             ingredientsDataGrid.ItemsSource = ingredientsToShow;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void onRegisterPatient(object sender, RoutedEventArgs e)
         {
             string jmbg = jmbgBox.Text;
             string email = emailBox.Text;
@@ -59,15 +68,29 @@ namespace Project.View
             string lastname = lastnameBox.Text;
             string phone = phoneBox.Text;
 
-            userController.RegisterPatient(jmbg, email, password, firstname, lastname, phone);
-        }
+            flag = false;
 
+            foreach (var patient in patientsToShow)
+            {
+                if (jmbg == patient.Jmbg || email == patient.Email)
+                {
+                    MessageBox.Show("Ne moze");
+                    flag = true;
+                }
+            }
+
+            if (!flag)
+            {
+                app.userController.RegisterPatient(jmbg, email, password, firstname, lastname, phone);
+                MessageBox.Show("Patient created");
+            }
+        }
 
         private void onSearchMedicineByCode(object sender, RoutedEventArgs e)
         {
             if (searchByCode.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByCode = new List<Medicine>();
@@ -86,7 +109,7 @@ namespace Project.View
 
             if (searchByName.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByName = new List<Medicine>();
@@ -104,7 +127,7 @@ namespace Project.View
         {
             if (searchByManufacturer.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByMnf = new List<Medicine>();
@@ -122,7 +145,7 @@ namespace Project.View
         {
             if (searchByPriceFrom.Text == "" || searchByPriceTo.Text == "")
             {
-                MessageBox.Show("Morate uneti validne vrednosti.");
+                MessageBox.Show("You must enter a valid value.");
             }
             List<Medicine> acceptedMedicinesByPrice = new List<Medicine>();
             foreach (var m in acceptedMedicine)
@@ -139,7 +162,7 @@ namespace Project.View
         {
             if (searchByAmount.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByAmount = new List<Medicine>();
@@ -161,19 +184,39 @@ namespace Project.View
         private void onAcceptMedicine(object sender, RoutedEventArgs e)
         {
             Medicine medToUp = (Medicine)waitingMedicineDataGrid.SelectedItem;
-            medicineController.AcceptMedicine(medToUp);
+
+            if (medToUp == null)
+            {
+                MessageBox.Show("you must select an item!");
+            }
+            else
+            {
+                app.medicineController.AcceptMedicine(medToUp);
+            }
         }
 
         private void onRejectMedicine(object sender, RoutedEventArgs e)
         {
+            Medicine medToUp = (Medicine)waitingMedicineDataGrid.SelectedItem;
 
+            if (medToUp == null)
+            {
+                MessageBox.Show("you must select an item!");
+
+            }
+            else
+            {
+                app.medicineController.RejectMedicine(medToUp);
+                MessageBox.Show("Medicine rejected with message: " + rejectMessage.Text);
+                rejectMessage.Text = "";
+            }
         }
 
         private void onSearchIngredientByName(object sender, RoutedEventArgs e)
         {
             if (searchIngredientByName.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Ingredient> ingredientsByName = new List<Ingredient>();
@@ -191,7 +234,7 @@ namespace Project.View
         {
             if (searchIngredientByDescription.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Ingredient> ingredientsByDesc = new List<Ingredient>();
@@ -205,9 +248,16 @@ namespace Project.View
 
             ingredientsDataGrid.ItemsSource = ingredientsByDesc;
         }
+
         private void onSearchIngredientByMedicine(object sender, RoutedEventArgs e)
         {
-
+            foreach (var medicine in allMedicines)
+            {
+                if (medicine.Name == ((Medicine)(medicineCombo.SelectedItem)).Name)
+                {
+                    ingredientsDataGrid.ItemsSource = medicine.Ingredients;
+                }
+            }
         }
     }
 }

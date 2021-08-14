@@ -12,7 +12,13 @@ namespace Service
 {
     public class ReceiptService:IReceiptService
     {
-        private ReceiptRepository receiptRepository = new ReceiptRepository();
+
+        private readonly IReceiptRepository _receiptRepository;
+
+        public ReceiptService(IReceiptRepository receiptRepository)
+        {
+            _receiptRepository = receiptRepository;
+        }
 
 
         public void CreateReceipt(Receipt receipt)
@@ -21,12 +27,12 @@ namespace Service
             // key je ime leka, int je broj koliko puta je on kupljen
             // foreach u dictu, i da zapisujemo u string
 
-            receiptRepository.CreateReceipt(receipt);
+            _receiptRepository.CreateReceipt(receipt);
         }
 
         public List<Receipt> GetByUserJmbg(string userJmbg)
         {
-            return receiptRepository.GetByUserJmbg(userJmbg);
+            return _receiptRepository.GetByUserJmbg(userJmbg);
         }
 
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project.Repository.Interfaces
 {
-    interface IIngredientService
+  public  interface IIngredientService
     {
         List<Ingredient> GetAll();
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project.Repository.Interfaces
 {
-    interface IMedicineService
+    public interface IMedicineService
     {
         List<Medicine> GetAll();
         List<Medicine> GetByValidation(bool validation);

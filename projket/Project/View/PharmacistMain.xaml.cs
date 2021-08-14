@@ -21,7 +21,8 @@ namespace Project.View
     /// </summary>
     public partial class PharmacistMain : Window
     {
-        MedicineController medicineController = new MedicineController();
+        //MedicineController medicineController = new MedicineController();
+        App app = (App)Application.Current;
 
         public PharmacistMain()
         {
@@ -53,7 +54,8 @@ namespace Project.View
             }
 
 
-            medicineController.CreateMedicine(code, name, manufacturer, price, amount, ingredients);
+            app.medicineController.CreateMedicine(code, name, manufacturer, price, amount, ingredients);
         }
+
     }
 }

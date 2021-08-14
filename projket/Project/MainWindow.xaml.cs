@@ -23,7 +23,8 @@ namespace Project
     /// </summary>
     public partial class MainWindow : Window
     {
-        UserController userController = new UserController();
+        App app = (App)Application.Current;
+
         User logedUser;
         int counter;
         public MainWindow()
@@ -32,7 +33,7 @@ namespace Project
             counter = 0;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) //doc button
         {
           //  this.Hide();
 
@@ -40,7 +41,7 @@ namespace Project
             n.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e) //pat button
         {
            // this.Hide();
 
@@ -48,7 +49,7 @@ namespace Project
             n.Show();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e) //pharm button
         {
          //   this.Hide();
 
@@ -56,11 +57,11 @@ namespace Project
             n.Show();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_Click_3(object sender, RoutedEventArgs e) //login
         {
             string jmbg = loginJmbg.Text;
             string pw = loginPassword.Text;
-            logedUser = userController.GetByJmbg(jmbg);
+            logedUser = app.userController.GetByJmbg(jmbg);
 
             if (counter > 2)
             {

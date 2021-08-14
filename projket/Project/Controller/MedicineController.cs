@@ -6,55 +6,51 @@
 using System;
 using System.Collections.Generic;
 using Model;
+using Project.Repository.Interfaces;
 using Service;
 
 namespace Controller
 {
    public class MedicineController
    {
-        MedicineService medicineService = new MedicineService();
-      public List<Medicine> GetAll()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Medicine> SearchMedicine()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Medicine> GetByValidation(bool validation)
-      {
-            return medicineService.GetByValidation(validation);
+        // private MedicineService medicineService = new MedicineService();
 
+        private readonly IMedicineService _medicineService;
+
+        public MedicineController(IMedicineService medicineService)
+        {
+            _medicineService = medicineService;
+        }
+
+        public List<Medicine> GetAll()
+        {
+            return _medicineService.GetAll();
+        }
+
+
+        public List<Medicine> GetByValidation(bool validation)
+        {
+            return _medicineService.GetByValidation(validation);
         }
 
         public void AcceptMedicine(Medicine medicine)
-      {
-            medicineService.AcceptMedicine(medicine);
+        {
+            _medicineService.AcceptMedicine(medicine);
         }
 
         public void DeleteMedicine(Medicine medicine)
-      {
-            medicineService.DeleteMedicine(medicine);
+        {
+            _medicineService.DeleteMedicine(medicine);
         }
 
         public void RejectMedicine(Medicine medicine)
-      {
-            medicineService.RejectMedicine(medicine);
+        {
+            _medicineService.RejectMedicine(medicine);
         }
 
-        public void BuyMedicine()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void CreateMedicine(string code, string name, string manufacturer, float price, int amount, List<Ingredient> ingredients)
-      {
-            medicineService.CreateMedicine(code, name, manufacturer, price, amount, ingredients);
+        public void CreateMedicine(string code, string name, string manufacturer, float price, int amount, List<Ingredient> ingredients)
+        {
+            _medicineService.CreateMedicine(code, name, manufacturer, price, amount, ingredients);
         }
-
-
-
     }
 }

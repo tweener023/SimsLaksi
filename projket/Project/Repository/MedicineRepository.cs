@@ -28,14 +28,14 @@ namespace Repository
 
         public List<Medicine> GetAll()
         {
-            throw new NotImplementedException();
+            return _objects;
         }
-
+      
         public List<Medicine> SearchMedicine()
         {
             throw new NotImplementedException();
         }
-
+      
         public List<Medicine> GetByValidation(bool validation)
         {
             // true = trazimo uslov accepted = true
@@ -49,7 +49,7 @@ namespace Repository
         {
             throw new NotImplementedException();
         }
-
+      
         public void CreateMedicine(Medicine medicine)
         {
             // kada se lek doda u json, moramo promeniti i ingredients count za svaki od ingredientsa koji se pojavljuje u novounetom leku
@@ -76,7 +76,7 @@ namespace Repository
             return medToUpdate;
         }
 
-
+        
 
         private void ReadJson()
         {
@@ -99,7 +99,5 @@ namespace Repository
             string json = JsonConvert.SerializeObject(_objects, Formatting.Indented);
             File.WriteAllText(_fileLocation, json);
         }
-
-
     }
 }

@@ -22,13 +22,17 @@ namespace Project.View
     public partial class PatientMain : Window
     {
         private User currentUser;
-        private ReceiptController receiptController = new ReceiptController();
-        private MedicineController medicineController = new MedicineController();
+        App app = (App)Application.Current;
+
+        //private ReceiptController receiptController = new ReceiptController();
+        //private MedicineController medicineController = new MedicineController();
 
         List<Receipt> receiptsToShow;
         List<Medicine> acceptedMedicine;
 
         List<Medicine> cartList = new List<Medicine>();
+
+        // ObservableCollection<Medicine> cartToShow = new ObservableCollection<Medicine>();
 
 
         public PatientMain(User logedUser)
@@ -37,10 +41,10 @@ namespace Project.View
             currentUser = logedUser;
 
 
-            acceptedMedicine = medicineController.GetByValidation(true); // trebaju nam ovi koji su prihvaceni accepted=true
+            acceptedMedicine = app.medicineController.GetByValidation(true); // trebaju nam ovi koji su prihvaceni accepted=true
             medicineDataGrid.ItemsSource = acceptedMedicine;
 
-            receiptsToShow = receiptController.GetByUserJmbg(currentUser.Jmbg);
+            receiptsToShow = app.receiptController.GetByUserJmbg(currentUser.Jmbg);
             receiptsDataGrid.ItemsSource = receiptsToShow;
         }
 
@@ -63,6 +67,7 @@ namespace Project.View
                 cartList.Add(medToCart);
             }
         }
+
 
         private void onSearchMedicineByCode(object sender, RoutedEventArgs e)
         {
@@ -87,7 +92,7 @@ namespace Project.View
 
             if (searchByName.Text == "")
             {
-                MessageBox.Show("Morate uneti validno ime.");
+                MessageBox.Show("Morate uneti validno ime leka.");
             }
 
             List<Medicine> acceptedMedicinesByName = new List<Medicine>();
@@ -105,7 +110,7 @@ namespace Project.View
         {
             if (searchByManufacturer.Text == "")
             {
-                MessageBox.Show("Proizvodjac ne sme biti prazan string.");
+                MessageBox.Show("Morate uneti validnog proizvodjaca.");
             }
 
             List<Medicine> acceptedMedicinesByMnf = new List<Medicine>();
@@ -119,12 +124,11 @@ namespace Project.View
             medicineDataGrid.ItemsSource = acceptedMedicinesByMnf;
         }
 
-
         private void onSearchMedicineByPrice(object sender, RoutedEventArgs e)
         {
             if (searchByPriceFrom.Text == "" || searchByPriceTo.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu cenu.");
+                MessageBox.Show("Morate uneti validan opseg cena.");
             }
             List<Medicine> acceptedMedicinesByPrice = new List<Medicine>();
             foreach (var m in acceptedMedicine)
@@ -136,11 +140,12 @@ namespace Project.View
             }
             medicineDataGrid.ItemsSource = acceptedMedicinesByPrice;
         }
+
         private void onSearchMedicineByAmount(object sender, RoutedEventArgs e)
         {
             if (searchByAmount.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("Morate uneti validnu kolicinu.");
             }
 
             List<Medicine> acceptedMedicinesByAmount = new List<Medicine>();

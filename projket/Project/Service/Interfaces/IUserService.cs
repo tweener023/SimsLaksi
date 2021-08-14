@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project.Repository.Interfaces
 {
-    interface IUserService
+   public interface IUserService
     {
         void RegisterPatient(string jmbg, string email, string password, string firstName, string lastName, string phone);
         User GetByJmbg(string jmbg);

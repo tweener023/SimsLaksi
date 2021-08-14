@@ -21,8 +21,8 @@ namespace Project.View
     /// </summary>
     public partial class Checkout : Window
     {
-
-        ReceiptController receiptController = new ReceiptController();
+        // ReceiptController receiptController = new ReceiptController();
+        App app = (App)Application.Current;
 
 
         private List<Medicine> itemsToShow = new List<Medicine>();
@@ -45,7 +45,7 @@ namespace Project.View
 
             order = new Receipt(12, "apotekarko Apotekarkovic", "01.12.2021.", medQty, "", (float)14.1, "1");
 
-            receiptController.CreateReceipt(order);
+            app.receiptController.CreateReceipt(order);
         }
 
 
