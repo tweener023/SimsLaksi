@@ -185,8 +185,8 @@
                         </DataGrid>
                         <TextBox x:Name="rejectMessage"  Width="370" Height="40" HorizontalAlignment="Left" Text="Razlog odbijanja..."/>
                         <DockPanel>
-                            <Button Background="Green" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Prihvati"  />
-                            <Button Background="Red" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Odbij" />
+                            <Button Background="Green" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Prihvati"  Click="onAcceptMedicine"/>
+                            <Button Background="Red" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Odbij" Click="onRejectMedicine" />
                         </DockPanel>
                     </StackPanel>
                 </Grid>

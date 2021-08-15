@@ -1,91 +1,179 @@
-﻿[
+[
   {
-    "code": "AF345612",
-    "name": "Brufen",
-    "manufacturer": "Braca i Sinovi",
-    "price": 12.43,
-    "amount": 14,
-    "ingredients": [
+    "Code": "AF345612",
+    "Name": "Brufen",
+    "Manufacturer": "Braca i Sinovi",
+    "Price": 12.43,
+    "Amount": 14,
+    "Ingredients": [
       {
-        "name": "Opasan sastojak1",
-        "description": "Lorem ipsum nananana...."
+        "Name": "Opasan sastojak1",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       },
       {
-        "name": "Opasan sastojak2",
-        "description": "Lorem ipsum nananana...."
-
+        "Name": "Opasan sastojak2",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       },
       {
-        "name": "Opasan sastojak3",
-        "description": "Lorem ipsum nananana...."
+        "Name": "Opasan sastojak3",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       }
     ],
-    "accepted": true,
-    "deleted": false
+    "Accepted": true,
+    "Deleted": false
   },
   {
-    "code": "DFSJU94021BKJ",
-    "name": "Skopril",
-    "manufacturer": "Braca i Sinovi",
-    "price": 22.77,
-    "amount": 9,
-    "ingredients": [
+    "Code": "DFSJU94021BKJ",
+    "Name": "Skopril",
+    "Manufacturer": "Braca i Sinovi",
+    "Price": 22.77,
+    "Amount": 9,
+    "Ingredients": [
       {
-        "name": "Skopril sastojak1",
-        "description": "Lorem ipsum nananana...."
+        "Name": "Skopril sastojak1",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       },
       {
-        "name": "Skopril sastojak2",
-        "description": "Lorem ipsum nananana...."
+        "Name": "Skopril sastojak2",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       },
       {
-        "name": "Skopril sastojak3",
-        "description": "Lorem ipsum nananana...."
+        "Name": "Skopril sastojak3",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       }
     ],
-    "accepted": true,
-    "deleted": false
+    "Accepted": true,
+    "Deleted": false
   },
   {
-    "code": "HFDA7HJ432KB",
-    "name": "Jabuka",
-    "manufacturer": "Vocnjak",
-    "price": 5.43,
-    "amount": 27,
-    "ingredients": [
+    "Code": "HFDA7HJ432KB",
+    "Name": "Jabuka",
+    "Manufacturer": "Vocnjak",
+    "Price": 5.43,
+    "Amount": 27,
+    "Ingredients": [
       {
-        "name": "Opasan sastojak1",
-        "description": "Lorem ipsum nananana...."
+        "Name": "Opasan sastojak1",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       },
       {
-        "name": "Opasan sastojak2",
-        "description": "Lorem ipsum nananana...."
+        "Name": "Opasan sastojak2",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       }
     ],
-    "accepted": false,
-    "deleted": false
+    "Accepted": true,
+    "Deleted": false
   },
   {
-    "code": "GFJ4312H41",
-    "name": "Panklav",
-    "manufacturer": "Braca i Sinovi",
-    "price": 19.43,
-    "amount": 54,
-    "ingredients": [
+    "Code": "GFJ43132H41",
+    "Name": "Panklav",
+    "Manufacturer": "Braca i Sinovi",
+    "Price": 19.43,
+    "Amount": 54,
+    "Ingredients": [
       {
-        "name": "Panklav sastojak1",
-        "description": "Lorem ipsum nananana...."
+        "Name": "Panklav sastojak1",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       },
       {
-        "name": "Panklav sastojak2",
-        "description": "Lorem ipsum nananana...."
+        "Name": "Panklav sastojak2",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       },
       {
-        "name": "Panklav sastojak3",
-        "description": "Lorem ipsum nananana...."
+        "Name": "Panklav sastojak3",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
       }
     ],
-    "accepted": false,
-    "deleted": false
+    "Accepted": false,
+    "Deleted": false
+  },
+  {
+    "Code": "GFJ43212H41",
+    "Name": "Aktivni ugalj",
+    "Manufacturer": "Braca i Sinovi",
+    "Price": 19.43,
+    "Amount": 54,
+    "Ingredients": [
+      {
+        "Name": "Panklav sastojak1",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
+      },
+      {
+        "Name": "Panklav sastojak2",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
+      },
+      {
+        "Name": "Panklav sastojak3",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
+      }
+    ],
+    "Accepted": false,
+    "Deleted": false
+  },
+  {
+    "Code": "GFJ41312H41",
+    "Name": "Bromazepam",
+    "Manufacturer": "Braca i Sinovi",
+    "Price": 19.43,
+    "Amount": 54,
+    "Ingredients": [
+      {
+        "Name": "Panklav sastojak1",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
+      },
+      {
+        "Name": "Panklav sastojak2",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
+      },
+      {
+        "Name": "Panklav sastojak3",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
+      }
+    ],
+    "Accepted": false,
+    "Deleted": false
+  },
+  {
+    "Code": "GFJ4312H4111",
+    "Name": "Lorazepam",
+    "Manufacturer": "Braca i Sinovi",
+    "Price": 19.43,
+    "Amount": 54,
+    "Ingredients": [
+      {
+        "Name": "Panklav sastojak1",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
+      },
+      {
+        "Name": "Panklav sastojak2",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
+      },
+      {
+        "Name": "Panklav sastojak3",
+        "Description": "Lorem ipsum nananana....",
+        "CountInMedicines": 0
+      }
+    ],
+    "Accepted": false,
+    "Deleted": false
   }
 ]

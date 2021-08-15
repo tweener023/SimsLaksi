@@ -192,6 +192,8 @@ namespace Project.View
             else
             {
                 app.medicineController.AcceptMedicine(medToUp);
+                MessageBox.Show("Medicine accepted!");
+
             }
         }
 
