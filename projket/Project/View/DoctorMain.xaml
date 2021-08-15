@@ -111,7 +111,10 @@
             </TabItem>
             <TabItem Header="Dodaj pacijenta">
                 <Grid Background="#FFE5E5E5">
-                    <StackPanel>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="0,0,0.4,0.2">
                         <DockPanel Margin="5">
                             <Label Width="70">JMBG:</Label>
                             <TextBox x:Name ="jmbgBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
@@ -142,7 +145,7 @@
                         AutoGenerateColumns="False"
                         IsReadOnly="True" Width="369" 
                         HorizontalAlignment="Left"
-                        Margin="361,5,0,15">
+                        Margin="361,5,0,15.2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="JMBG"
                                 Binding="{Binding Jmbg}" />

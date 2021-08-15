@@ -52,5 +52,23 @@
     "LastName": "seselj33",
     "Phone": "333",
     "UserType": 0
+  },
+  {
+    "Jmbg": "",
+    "Email": "",
+    "Password": "",
+    "FirstName": "",
+    "LastName": "",
+    "Phone": "",
+    "UserType": 0
+  },
+  {
+    "Jmbg": "",
+    "Email": "",
+    "Password": "",
+    "FirstName": "",
+    "LastName": "",
+    "Phone": "",
+    "UserType": 0
   }
 ]

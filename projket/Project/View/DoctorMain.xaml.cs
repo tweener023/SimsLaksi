@@ -90,7 +90,7 @@ namespace Project.View
         {
             if (searchByCode.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             List<Medicine> acceptedMedicinesByCode = new List<Medicine>();
@@ -109,7 +109,7 @@ namespace Project.View
 
             if (searchByName.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             List<Medicine> acceptedMedicinesByName = new List<Medicine>();
@@ -127,7 +127,7 @@ namespace Project.View
         {
             if (searchByManufacturer.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             List<Medicine> acceptedMedicinesByMnf = new List<Medicine>();
@@ -145,7 +145,7 @@ namespace Project.View
         {
             if (searchByPriceFrom.Text == "" || searchByPriceTo.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
             List<Medicine> acceptedMedicinesByPrice = new List<Medicine>();
             foreach (var m in acceptedMedicine)
@@ -162,7 +162,7 @@ namespace Project.View
         {
             if (searchByAmount.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             List<Medicine> acceptedMedicinesByAmount = new List<Medicine>();
@@ -187,7 +187,7 @@ namespace Project.View
 
             if (medToUp == null)
             {
-                MessageBox.Show("you must select an item!");
+                MessageBox.Show("Morate odabrati lek");
             }
             else
             {
@@ -201,7 +201,7 @@ namespace Project.View
 
             if (medToUp == null)
             {
-                MessageBox.Show("you must select an item!");
+                MessageBox.Show("Morate odabrati lek");
 
             }
             else
@@ -216,7 +216,7 @@ namespace Project.View
         {
             if (searchIngredientByName.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             List<Ingredient> ingredientsByName = new List<Ingredient>();
@@ -234,7 +234,7 @@ namespace Project.View
         {
             if (searchIngredientByDescription.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             List<Ingredient> ingredientsByDesc = new List<Ingredient>();
