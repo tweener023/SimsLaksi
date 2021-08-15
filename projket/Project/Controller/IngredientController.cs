@@ -26,6 +26,12 @@ namespace Controller
         {
             return _ingredientService.GetAll();
         }
+
+        public Ingredient GetByName(string ingredientName)
+        {
+            return _ingredientService.GetByName(ingredientName);
+        }
+
     }
 
 }

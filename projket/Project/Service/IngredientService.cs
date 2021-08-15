@@ -23,15 +23,19 @@ namespace Service
         }
 
         public List<Ingredient> GetAll()
-      {
+        {
          return ingredientRepository.GetAll();
-      }
+        }
       
       public List<Ingredient> SearchIngredient()
       {
          throw new NotImplementedException();
       }
-    
-   
-   }
+
+        public Ingredient GetByName(string ingredientName)
+        {
+            return _ingredientRepository.GetByName(ingredientName);
+        }
+
+    }
 }

@@ -65,6 +65,10 @@ namespace Repository
             string json = JsonConvert.SerializeObject(_objects, Formatting.Indented);
             File.WriteAllText(_fileLocation, json);
         }
-
+        public Ingredient GetByName(string ingredientName)
+        {
+            ReadJson();
+            return _objects.Find(obj => obj.Name == ingredientName);
+        }
     }
 }

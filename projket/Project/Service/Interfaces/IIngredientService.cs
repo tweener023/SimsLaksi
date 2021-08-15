@@ -10,6 +10,6 @@ namespace Project.Repository.Interfaces
   public  interface IIngredientService
     {
         List<Ingredient> GetAll();
-
+        Ingredient GetByName(string ingredientName);
     }
 }

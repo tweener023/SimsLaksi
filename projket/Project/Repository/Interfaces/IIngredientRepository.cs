@@ -14,5 +14,8 @@ namespace Project.Repository.Interfaces
         Ingredient UpdateIngredient(Ingredient ingredientToUpdate);
 
         List<Ingredient> SearchIngredient();
+
+        Ingredient GetByName(string ingredientName);
+
     }
 }

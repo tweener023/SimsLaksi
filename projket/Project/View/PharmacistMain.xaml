@@ -7,134 +7,247 @@
         mc:Ignorable="d"
         Title="Apotekar" Height="450" Width="800">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
-            <TabItem Header="Lekovi">
+        <TabControl HorizontalAlignment="Left" Height="749" VerticalAlignment="Top" Width="792">
+            <TabItem Header="Medicines">
                 <Grid Background="#FFE5E5E5">
-                    <StackPanel>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="12*"/>
+                        <ColumnDefinition Width="23*"/>
+                        <ColumnDefinition Width="227*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.ColumnSpan="3">
                         <DockPanel Margin="5">
-                            <Label Width="150">Pretraga po šifri:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">5452</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži"/>
+                            <Label Width="150">Search by code:</Label>
+                            <TextBox x:Name="searchByCode" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">5452</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByCode"/>
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="150">Pretraga po imenu:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži"/>
+                            <Label Width="150">Search by name:</Label>
+                            <TextBox x:Name="searchByName" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByName"/>
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="150">Pretraga po proizvođaču:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Idk</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži"/>
+                            <Label Width="150">Search by manufacturer:</Label>
+                            <TextBox x:Name="searchByManufacturer" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Idk</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByManufacturer"/>
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="150">Pretraga po ceni:</Label>
-                            <TextBox Width="80" HorizontalAlignment="Left" Margin="5,0,0,0">From</TextBox>
-                            <TextBox Width="80" HorizontalAlignment="Left" Margin="5,0,0,0">To</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži"/>
+                            <Label Width="150">Search by price:</Label>
+                            <TextBox x:Name="searchByPriceFrom" Width="72" HorizontalAlignment="Left" Margin="5,0,0,0">From</TextBox>
+                            <TextBox x:Name="searchByPriceTo" Width="72" HorizontalAlignment="Left" Margin="5,0,0,0">To</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="6,0,0,0" Content="Search" Click="onSearchMedicineByPrice"/>
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="150">Pretraga po količini:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">15</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži"/>
+                            <Label Width="150">Search by amount:</Label>
+                            <TextBox x:Name="searchByAmount" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">15</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByAmount"/>
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="150">Pretraga po sastojcima:</Label>
-                            <TextBox Width="300" HorizontalAlignment="Left" Margin="5,0,0,0">silicijum-dioksid amp; (magnezijum | kalcijum))</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži"/>
+                            <Label Width="150">Search by ingredient:</Label>
+                            <TextBox x:Name="searchByIngredient" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Text="sicilijum-dioksid"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByIngredients"/>
+                            <Button Background="Red" Content="Delete Medicine" HorizontalAlignment="Right" Width="111" Click="onDeleteMedicine" />
                         </DockPanel>
                     </StackPanel>
                     <DataGrid x:Name="medicineDataGrid"
                             AutoGenerateColumns="False"
-                            IsReadOnly="True" Margin="10,232,0,20" Width="369" HorizontalAlignment="Left">
+                            IsReadOnly="True" Margin="10,232,0,20" Width="766" HorizontalAlignment="Left" Grid.ColumnSpan="3">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Šifra"
+                            <DataGridTextColumn Header="Code"
                             Binding="{Binding Code}" />
-                            <DataGridTextColumn Header="Ime"
+                            <DataGridTextColumn Header="Name"
                             Binding="{Binding Name}" />
-                            <DataGridTextColumn Header="Proizvođač"
+                            <DataGridTextColumn Header="Manufacturer"
                             Binding="{Binding Manufacturer}" />
-                            <DataGridTextColumn Header="Cena"
+                            <DataGridTextColumn Header="Price"
                             Binding="{Binding Price}" />
-                            <DataGridTextColumn Header="Količina"
+                            <DataGridTextColumn Header="Amount"
                             Binding="{Binding Amount}" />
-                            <DataGridTextColumn Header="Sastojci"
-                            Binding="{Binding Ingredients}" />
+                            <DataGridTextColumn Header="Deleted"
+                            Binding="{Binding Deleted}" />
+                            <DataGridTemplateColumn Header="Ingredients">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ItemsControl ItemsSource="{Binding Ingredients}" DisplayMemberPath="Name"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Background="Red" Content="Obriši" HorizontalAlignment="Left" Margin="401,351,0,0" VerticalAlignment="Top" Width="75" />
-
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Sastojci">
+            <TabItem Header="Ingredients">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
                     <StackPanel>
                         <DockPanel Margin="5">
-                            <Label Width="130">Pretraga po imenu:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži"/>
+                            <Label Width="130">Search by name:</Label>
+                            <TextBox x:Name="searchIngredientByName" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">kofein</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchIngredientByName"/>
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="130">Pretraga po opisu:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Some description idk</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži"/>
+                            <Label Width="130">Search by description:</Label>
+                            <TextBox x:Name="searchIngredientByDescription" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Some description idk</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchIngredientByDescription"/>
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="130">Pretraga po leku:</Label>
-                            <TextBox Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži"/>
+                            <Label Width="130">Search by medicine:</Label>
+                            <ComboBox Width="150" Margin="5,0,0,0" x:Name="medicineCombo">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchIngredientByMedicine"/>
                         </DockPanel>
                     </StackPanel>
-                    <DataGrid x:Name="ingerdientsDataGrid"
+                    <DataGrid x:Name="ingredientsDataGrid"
                             AutoGenerateColumns="False"
-                            IsReadOnly="True" Margin="10,130,0,122" Width="369" HorizontalAlignment="Left">
+                            IsReadOnly="True" Margin="10,130,0,122" Width="388" HorizontalAlignment="Left">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Ime"
+                            <DataGridTextColumn Header="Name"
                             Binding="{Binding Name}" />
-                            <DataGridTextColumn Header="Opis"
-                            Binding="{Binding Manufacturer}" />
-                            <DataGridTextColumn Header="Lek"
-                            Binding="{Binding Price}" />
-                            <DataGridTextColumn Header="Uračunat lek"
-                            Binding="{Binding Amount}" />
+                            <DataGridTextColumn Header="Description"
+                            Binding="{Binding Description}" />
+                            <DataGridTextColumn Header="Count in medicines"
+                            Binding="{Binding CountInMedicines}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Dodaj lek">
+
+
+            <TabItem Header="Register medicine">
                 <Grid Background="#FFE5E5E5">
                     <StackPanel>
                         <DockPanel Margin="5">
-                            <Label Width="90">Šifra:</Label>
-                            <TextBox x:Name="registerCodeBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <Label Width="90">Code:</Label>
+                            <TextBox x:Name="registerCodeBox"  Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="90">Ime:</Label>
-                            <TextBox x:Name="registerNameBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <Label Width="90">Name:</Label>
+                            <TextBox x:Name="registerNameBox"  Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="90">Proizvođač:</Label>
-                            <TextBox x:Name="registerManufacturerBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <Label Width="90">Manufacturer:</Label>
+                            <TextBox x:Name="registerManufacturerBox"  Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="90">Cena:</Label>
-                            <TextBox x:Name="registerPriceBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <Label Width="90">Price:</Label>
+                            <TextBox x:Name="registerPriceBox"  Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="90">Količina:</Label>
-                            <TextBox x:Name="registerAmountBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <Label Width="90">Amount:</Label>
+                            <TextBox x:Name="registerAmountBox"  Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
                         <DockPanel Margin="5">
-                            <Label Width="90">Sastojci:</Label>
-                            <TextBox x:Name="registerIngredientsBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <Label Width="90">Ingredients:</Label>
+                            <TextBox x:Name="registerIngredientsBox" Text="prvi,drugi,treci" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
-                        <Button Content="Dodaj" Width="70" HorizontalAlignment="Left" Background="Green" Margin="5"/>
+                        <Button Content="Register" Width="70" HorizontalAlignment="Left" Background="Green" Margin="5" Click="onRegisterMedicine"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Prihvaćeni i odbijeni lekovi">
-                <Grid Background="#FFE5E5E5">
 
+            <TabItem Header="Accepted/Rejected Medicines">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel>
+                        <Label Content="Accepted Medicines"  />
+                        <DataGrid x:Name="acceptedMedicineDataGrid" HorizontalAlignment="Left"
+                                AutoGenerateColumns="False" Width="400"
+                                IsReadOnly="True" Grid.ColumnSpan="3">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Code"
+                                Binding="{Binding Code}" />
+                                <DataGridTextColumn Header="Name"
+                                Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="Manufacturer"
+                                Binding="{Binding Manufacturer}" />
+                                <DataGridTextColumn Header="Price"
+                                Binding="{Binding Price}" />
+                                <DataGridTextColumn Header="Amount"
+                                Binding="{Binding Amount}" />
+                                <DataGridTextColumn Header="Deleted"
+                                Binding="{Binding Deleted}" />
+                                <DataGridTemplateColumn Header="Ingredients">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ItemsControl ItemsSource="{Binding Ingredients}" DisplayMemberPath="Name"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Label Content="Rejected Medicines"  />
+                        <DataGrid x:Name="rejectedMedicineDataGrid"
+                                AutoGenerateColumns="False" HorizontalAlignment="Left" Width="400"
+                                IsReadOnly="True" Grid.ColumnSpan="3">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Code"
+                                Binding="{Binding Code}" />
+                                <DataGridTextColumn Header="Name"
+                                Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="Manufacturer"
+                                Binding="{Binding Manufacturer}" />
+                                <DataGridTextColumn Header="Price"
+                                Binding="{Binding Price}" />
+                                <DataGridTextColumn Header="Amount"
+                                Binding="{Binding Amount}" />
+                                <DataGridTextColumn Header="Deleted"
+                                Binding="{Binding Deleted}" />
+                                <DataGridTemplateColumn Header="Ingredients">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ItemsControl ItemsSource="{Binding Ingredients}" DisplayMemberPath="Name"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Width="373">
+                        <DockPanel>
+                            <RadioButton x:Name="acceptedRadio" GroupName="searchRadio" Content="Search accepted" IsChecked="True"/>
+                            <RadioButton x:Name="rejectedRadio" GroupName="searchRadio" Content="Search rejected" Margin="15,0,0,0" />
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Search by code:</Label>
+                            <TextBox x:Name="searchByCodeRA" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0">5452</TextBox>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByCodeRA"/>
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Search by name:</Label>
+                            <TextBox x:Name="searchByNameRA" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByNameRA"/>
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Search by manufacturer:</Label>
+                            <TextBox x:Name="searchByManufacturerRA" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0">Idk</TextBox>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByManufacturerRA"/>
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Search by price:</Label>
+                            <TextBox x:Name="searchByPriceFromRA" Width="47" HorizontalAlignment="Left" Margin="5,0,0,0">From</TextBox>
+                            <TextBox x:Name="searchByPriceToRA" Width="47" HorizontalAlignment="Left" Margin="5,0,0,0">To</TextBox>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="6,0,0,0" Content="Search" Click="onSearchMedicineByPriceRA"/>
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Search by amount:</Label>
+                            <TextBox x:Name="searchByAmountRA" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0">15</TextBox>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByAmountRA"/>
+                        </DockPanel>
+                        <DockPanel Margin="5">
+                            <Label Width="150">Search by ingredient:</Label>
+                            <TextBox x:Name="searchByIngredientRA" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Text="sicilijum-dioksid"/>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchMedicineByIngredientsRA"/>
+                        </DockPanel>
+                    </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>
