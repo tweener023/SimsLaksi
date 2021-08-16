@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project.View"
         mc:Ignorable="d"
-        Title="PatientMain" Height="450" Width="800">
+        Title="Pacijent" Height="450" Width="800">
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
 
@@ -37,7 +37,7 @@
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraži po ceni:</Label>
                             <TextBox x:Name="searchByPriceFrom" Width="80" HorizontalAlignment="Left" Margin="5,0,0,0">From</TextBox>
-                            <TextBox x:Name="searchByPriceTo" Width="80" HorizontalAlignment="Left" Margin="5,0,0,0">To</TextBox>
+                            <TextBox x:Name="searchByPriceTo" Width="67" HorizontalAlignment="Left" Margin="5,0,0,0">To</TextBox>
                             <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByPrice"/>
                         </DockPanel>
                         <DockPanel Margin="5">
@@ -47,11 +47,13 @@
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraži po sastojcima:</Label>
-                            <TextBox x:Name="searchByIngredient" Width="280" HorizontalAlignment="Left" Margin="5,0,0,0">silicijum-dioksid amp; (magnezijum | kalcijum))</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByIngredients"/>
-                            <TextBox Margin="5,0,0,0" x:Name="medicineAmount" Width="70" />
+                            <TextBox x:Name="searchByIngredient" Width="153" HorizontalAlignment="Left" Margin="5,0,0,0">silicijum-dioksid amp; (magnezijum | kalcijum))</TextBox>
+                            <Button Width="97" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByIngredients"/>
+                            <Label Content="Kolicina:"  Margin="45,0,0,0"/>
 
-                            <Button Click="onAddToCart" Width="81" Content="Dodaj u korpu" />
+                            <TextBox Margin="5,0,0,0" x:Name="medicineAmount" Width="108" />
+
+                            <Button Click="onAddToCart" Width="87" Content="Dodaj u korpu" />
                             <Button Click="onCheckout" Width="70" Content="Checkout" />
                         </DockPanel>
                     </StackPanel>
