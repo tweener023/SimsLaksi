@@ -60,7 +60,7 @@ namespace Project.View
         {
             if (searchByCode.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu sifru.");
             }
 
             List<Medicine> acceptedMedicinesByCode = new List<Medicine>();
@@ -79,7 +79,7 @@ namespace Project.View
 
             if (searchByName.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validno ime.");
             }
 
             List<Medicine> acceptedMedicinesByName = new List<Medicine>();
@@ -97,7 +97,7 @@ namespace Project.View
         {
             if (searchByManufacturer.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnog proizvodjaca.");
             }
 
             List<Medicine> acceptedMedicinesByMnf = new List<Medicine>();
@@ -115,7 +115,7 @@ namespace Project.View
         {
             if (searchByPriceFrom.Text == "" || searchByPriceTo.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu cenu.");
             }
 
 
@@ -131,7 +131,7 @@ namespace Project.View
                 }
                 catch (System.FormatException)
                 {
-                    MessageBox.Show("You must enter a valid value.");
+                    MessageBox.Show("Morate uneti validan opseg.");
                 }
             }
             medicineDataGrid.ItemsSource = acceptedMedicinesByPrice;
@@ -141,7 +141,7 @@ namespace Project.View
         {
             if (searchByAmount.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu kolicinu.");
             }
 
             List<Medicine> acceptedMedicinesByAmount = new List<Medicine>();
@@ -156,7 +156,7 @@ namespace Project.View
                 }
                 catch (System.FormatException)
                 {
-                    MessageBox.Show("You must enter a valid value.");
+                    MessageBox.Show("Morate untei validnu vrednost.");
                 }
             }
             medicineDataGrid.ItemsSource = acceptedMedicinesByAmount;
@@ -168,7 +168,7 @@ namespace Project.View
 
             if (ingredientToSearch == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             List<Medicine> acceptedMedicineByIngredient = new List<Medicine>();
@@ -196,7 +196,7 @@ namespace Project.View
         {
             if (searchByCodeRA.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             if (acceptedRadio.IsChecked == true)
@@ -231,7 +231,7 @@ namespace Project.View
 
             if (searchByNameRA.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             if (acceptedRadio.IsChecked == true)
@@ -264,7 +264,7 @@ namespace Project.View
         {
             if (searchByManufacturerRA.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
 
@@ -298,7 +298,7 @@ namespace Project.View
         {
             if (searchByPriceFromRA.Text == "" || searchByPriceToRA.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             if (acceptedRadio.IsChecked == true)
@@ -315,7 +315,7 @@ namespace Project.View
                     }
                     catch (System.FormatException)
                     {
-                        MessageBox.Show("You must enter a valid value.");
+                        MessageBox.Show("Morate uneti validnu vrednost.");
                     }
                 }
                 acceptedMedicineDataGrid.ItemsSource = acceptedMedicinesByPrice;
@@ -334,7 +334,7 @@ namespace Project.View
                     }
                     catch (System.FormatException)
                     {
-                        MessageBox.Show("You must enter a valid value.");
+                        MessageBox.Show("Morate uneti validnu vrednost.");
                     }
                 }
                 rejectedMedicineDataGrid.ItemsSource = rejectedMedicinesByPrice;
@@ -345,7 +345,7 @@ namespace Project.View
         {
             if (searchByAmountRA.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             if (acceptedRadio.IsChecked == true)
@@ -362,7 +362,7 @@ namespace Project.View
                     }
                     catch (System.FormatException)
                     {
-                        MessageBox.Show("You must enter a valid value.");
+                        MessageBox.Show("Morate uneti validnu vrednost.");
                     }
                 }
                 acceptedMedicineDataGrid.ItemsSource = acceptedMedicinesByAmount;
@@ -381,7 +381,7 @@ namespace Project.View
                     }
                     catch (System.FormatException)
                     {
-                        MessageBox.Show("You must enter a valid value.");
+                        MessageBox.Show("Morate uneti validnu vrednost.");
                     }
                 }
                 rejectedMedicineDataGrid.ItemsSource = rejectedMedicinesByAmount;
@@ -394,7 +394,7 @@ namespace Project.View
 
             if (ingredientToSearch == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validnu vrednost.");
             }
 
             if (acceptedRadio.IsChecked == true)
@@ -443,7 +443,7 @@ namespace Project.View
         {
             if (searchIngredientByName.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validne vrednosti.");
             }
 
             List<Ingredient> ingredientsByName = new List<Ingredient>();
@@ -461,7 +461,7 @@ namespace Project.View
         {
             if (searchIngredientByDescription.Text == "")
             {
-                MessageBox.Show("You must enter a valid value.");
+                MessageBox.Show("Morate uneti validne vrednosti.");
             }
 
             List<Ingredient> ingredientsByDesc = new List<Ingredient>();
@@ -497,12 +497,12 @@ namespace Project.View
 
             if (medToUp == null)
             {
-                MessageBox.Show("you must select an item!");
+                MessageBox.Show("Odaberite lek!");
             }
             else
             {
                 app.medicineController.DeleteMedicine(medToUp);
-                MessageBox.Show("Medicine deleted");
+                MessageBox.Show("Lek obrisan");
             }
         }
 
@@ -521,7 +521,7 @@ namespace Project.View
             {
                 if (code == med.Code)
                 {
-                    MessageBox.Show("Code must be unique!");
+                    MessageBox.Show("Sifra mora biti jedinstvena!");
                     flag = true;
                 }
             }
@@ -532,7 +532,7 @@ namespace Project.View
             }
             catch (System.FormatException)
             {
-                MessageBox.Show("Enter valid price!");
+                MessageBox.Show("Unesite validnu cenu!");
                 flag = true;
             }
 
@@ -544,7 +544,7 @@ namespace Project.View
             }
             catch (System.FormatException)
             {
-                MessageBox.Show("Enter valid price!");
+                MessageBox.Show("Unesite validnu cenu!");
                 flag = true;
             }
 
@@ -559,7 +559,7 @@ namespace Project.View
                 ingredientToUpdate = app.ingredientController.GetByName(ingredientName);
                 if (ingredientToUpdate == null)
                 {
-                    MessageBox.Show("you must enter valid ingredient name!");
+                    MessageBox.Show("Morate uneti validno ime!");
                     flag = true;
                     //break;
                 }
@@ -573,7 +573,7 @@ namespace Project.View
             if (!flag)
             {
                 app.medicineController.CreateMedicine(code, name, manufacturer, price, amount, ingredients);
-                MessageBox.Show("Medicine registered!");
+                MessageBox.Show("Lek dodat!");
             }
         }
         #endregion
