@@ -28,13 +28,17 @@ namespace Project.View
         private List<Medicine> itemsToShow = new List<Medicine>();
         private Receipt order;
 
+        private User currentUser;
+        float price;
 
-        public Checkout(List<Medicine> toShow)
+        public Checkout(List<Medicine> toShow, User cU)
         {
             InitializeComponent();
 
+            currentUser = cU;
             itemsToShow = toShow;
             cartDataGrid.ItemsSource = itemsToShow;
+            price = 0;
         }
 
         private void onOrder(object sender, RoutedEventArgs e)
@@ -42,19 +46,29 @@ namespace Project.View
             // dodaj da pokupi date and time
 
             Dictionary<string, int> medQty = fillDict(itemsToShow);
+            Random rand = new Random();
 
-            order = new Receipt(12, "apotekarko Apotekarkovic", "01.12.2021.", medQty, "", (float)14.1, "1");
+            string medQtyString = string.Join(", ", medQty.Select(kv => kv.Key + ": " + kv.Value).ToArray());
+
+
+            order = new Receipt(rand.Next(1, 100), "Apotekarko Apotekarkovic", DateTime.Now.ToString("dd.mm.yyyy."), medQty, medQtyString, price, currentUser.Jmbg);
 
             app.receiptController.CreateReceipt(order);
-        }
 
+
+            MessageBoxResult res = MessageBox.Show("Order placed!");
+            Close();
+
+        }
 
         private Dictionary<string, int> fillDict(List<Medicine> cartItems)
         {
+
             var myDict = new Dictionary<string, int> { };
             foreach (var med in cartItems)
             {
                 myDict.Add(med.Name, med.Amount);
+                price += med.Price * med.Amount;
             }
 
             return myDict;

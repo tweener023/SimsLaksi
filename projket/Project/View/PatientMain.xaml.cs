@@ -28,7 +28,13 @@ namespace Project.View
         //private MedicineController medicineController = new MedicineController();
 
         List<Receipt> receiptsToShow;
+
+        List<Ingredient> ingredientsToShow;
+        List<Medicine> allMedicines;
         List<Medicine> acceptedMedicine;
+        List<Medicine> waitingMedicine;
+        List<User> patientsToShow;
+
 
         List<Medicine> cartList = new List<Medicine>();
 
@@ -46,8 +52,22 @@ namespace Project.View
 
             receiptsToShow = app.receiptController.GetByUserJmbg(currentUser.Jmbg);
             receiptsDataGrid.ItemsSource = receiptsToShow;
+
+            allMedicines = app.medicineController.GetAll();
+
+            acceptedMedicine = app.medicineController.GetByValidation(true); // trebaju nam ovi koji su prihvaceni accepted=true
+            medicineDataGrid.ItemsSource = acceptedMedicine;
+
+            medicineCombo.ItemsSource = acceptedMedicine;
+
+            //waitingMedicine = app.medicineController.GetByValidation(false); // trebaju nam ovi koji jos nisu prihvaceni accepted=false
+            //waitingMedicineDataGrid.ItemsSource = waitingMedicine;
+
+            ingredientsToShow = app.ingredientController.GetAll();
+            ingredientsDataGrid.ItemsSource = ingredientsToShow;
         }
 
+        #region cart functions
         private void onAddToCart(object sender, RoutedEventArgs e)
         {
             // otvara se messagebox tj neki dialog box u kojem ce da unese kolicinu
@@ -59,21 +79,31 @@ namespace Project.View
 
             if (medAmount > medToCart.Amount || medAmount > 5)
             {
-                MessageBox.Show("ne moze toliko brt");
+                MessageBox.Show("you cant order more than 5!");
             }
             else
             {
                 medToCart.Amount = Int32.Parse(medicineAmount.Text);
                 cartList.Add(medToCart);
+                MessageBox.Show("medicine added to cart!");
             }
         }
 
+        private void onCheckout(object sender, RoutedEventArgs e)
+        {
+            Checkout checkoutWindow = new Checkout(cartList, currentUser);
+            checkoutWindow.Show();
+        }
 
+        #endregion
+
+
+        #region medicine search
         private void onSearchMedicineByCode(object sender, RoutedEventArgs e)
         {
             if (searchByCode.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu sifru.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByCode = new List<Medicine>();
@@ -92,7 +122,7 @@ namespace Project.View
 
             if (searchByName.Text == "")
             {
-                MessageBox.Show("Morate uneti validno ime leka.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByName = new List<Medicine>();
@@ -110,7 +140,7 @@ namespace Project.View
         {
             if (searchByManufacturer.Text == "")
             {
-                MessageBox.Show("Morate uneti validnog proizvodjaca.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByMnf = new List<Medicine>();
@@ -128,14 +158,23 @@ namespace Project.View
         {
             if (searchByPriceFrom.Text == "" || searchByPriceTo.Text == "")
             {
-                MessageBox.Show("Morate uneti validan opseg cena.");
+                MessageBox.Show("You must enter a valid value.");
             }
+
+
             List<Medicine> acceptedMedicinesByPrice = new List<Medicine>();
             foreach (var m in acceptedMedicine)
             {
-                if (m.Price > float.Parse(searchByPriceFrom.Text) && m.Price < float.Parse(searchByPriceTo.Text))
+                try
                 {
-                    acceptedMedicinesByPrice.Add(m);
+                    if (m.Price > float.Parse(searchByPriceFrom.Text) && m.Price < float.Parse(searchByPriceTo.Text))
+                    {
+                        acceptedMedicinesByPrice.Add(m);
+                    }
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("You must enter a valid value.");
                 }
             }
             medicineDataGrid.ItemsSource = acceptedMedicinesByPrice;
@@ -145,15 +184,22 @@ namespace Project.View
         {
             if (searchByAmount.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu kolicinu.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByAmount = new List<Medicine>();
             foreach (var m in acceptedMedicine)
             {
-                if (m.Amount == Int32.Parse(searchByAmount.Text))
+                try
                 {
-                    acceptedMedicinesByAmount.Add(m);
+                    if (m.Amount == Int32.Parse(searchByAmount.Text))
+                    {
+                        acceptedMedicinesByAmount.Add(m);
+                    }
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("You must enter a valid value.");
                 }
             }
             medicineDataGrid.ItemsSource = acceptedMedicinesByAmount;
@@ -161,19 +207,82 @@ namespace Project.View
 
         private void onSearchMedicineByIngredients(object sender, RoutedEventArgs e)
         {
+            string ingredientToSearch = searchByIngredient.Text;
 
+            if (ingredientToSearch == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Medicine> acceptedMedicineByIngredient = new List<Medicine>();
+
+            foreach (var medicine in acceptedMedicine)
+            {
+                foreach (var ingredient in medicine.Ingredients)
+                {
+                    if (ingredientToSearch == ingredient.Name)
+                    {
+                        acceptedMedicineByIngredient.Add(medicine);
+                    }
+                }
+            }
+
+            medicineDataGrid.ItemsSource = acceptedMedicineByIngredient;
         }
 
-        private void onOrder(object sender, RoutedEventArgs e)
+        #endregion
+
+
+        #region ingredient search
+        private void onSearchIngredientByName(object sender, RoutedEventArgs e)
         {
+            if (searchIngredientByName.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
 
+            List<Ingredient> ingredientsByName = new List<Ingredient>();
+            foreach (var i in ingredientsToShow)
+            {
+                if (i.Name.ToLower().Contains(searchIngredientByName.Text.ToLower()))
+                {
+                    ingredientsByName.Add(i);
+                }
+            }
+            ingredientsDataGrid.ItemsSource = ingredientsByName;
         }
 
-        private void onCheckout(object sender, RoutedEventArgs e)
+        private void onSearchIngredientByDescription(object sender, RoutedEventArgs e)
         {
-            Checkout checkoutWindow = new Checkout(cartList);
-            checkoutWindow.Show();
+            if (searchIngredientByDescription.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Ingredient> ingredientsByDesc = new List<Ingredient>();
+            foreach (var i in ingredientsToShow)
+            {
+                if (i.Description.ToLower().Contains(searchIngredientByDescription.Text.ToLower()))
+                {
+                    ingredientsByDesc.Add(i);
+                }
+            }
+
+            ingredientsDataGrid.ItemsSource = ingredientsByDesc;
         }
+
+        private void onSearchIngredientByMedicine(object sender, RoutedEventArgs e)
+        {
+            foreach (var medicine in allMedicines)
+            {
+                if (medicine.Name == ((Medicine)(medicineCombo.SelectedItem)).Name)
+                {
+                    ingredientsDataGrid.ItemsSource = medicine.Ingredients;
+                }
+            }
+        }
+
+        #endregion
 
     }
 
