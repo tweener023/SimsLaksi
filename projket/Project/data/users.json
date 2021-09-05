@@ -70,5 +70,14 @@
     "LastName": "",
     "Phone": "",
     "UserType": 0
+  },
+  {
+    "Jmbg": "123",
+    "Email": "nikolajsatara99@gmail.com",
+    "Password": "nini",
+    "FirstName": "Nikolaj",
+    "LastName": "Satara",
+    "Phone": "08181818",
+    "UserType": 0
   }
 ]

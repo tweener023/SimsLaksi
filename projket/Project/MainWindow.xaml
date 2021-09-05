@@ -9,8 +9,7 @@
     <Grid Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}">
 
         <Button Content="Doktor" HorizontalAlignment="Left" Height="56" Margin="200,229,0,0" VerticalAlignment="Top" Width="351" Click="Button_Click"/>
-        <Button Content="Pacijent" HorizontalAlignment="Left" Height="56" Margin="200,285,0,0" VerticalAlignment="Top" Width="351" Click="Button_Click_1"/>
-        <Button Content="Apotekar" HorizontalAlignment="Left" Height="56" Margin="200,341,0,0" VerticalAlignment="Top" Width="351" Click="Button_Click_2"/>
+        <Button Content="Apotekar" HorizontalAlignment="Left" Height="56" Margin="200,285,0,0" VerticalAlignment="Top" Width="351" Click="Button_Click_2"/>
         <Rectangle Fill="#FF7373C1" HorizontalAlignment="Left" Height="164" Margin="163,43,0,0" Stroke="Black" VerticalAlignment="Top" Width="447"/>
         <TextBox x:Name ="loginJmbg" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="203" Margin="373,77,0,0"/>
         <TextBox x:Name="loginPassword" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="203" Margin="373,127,0,0" />

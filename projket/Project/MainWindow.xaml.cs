@@ -41,14 +41,6 @@ namespace Project
             n.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e) //pat button
-        {
-           // this.Hide();
-
-            PatientMain n = new PatientMain(logedUser);
-            n.Show();
-        }
-
         private void Button_Click_2(object sender, RoutedEventArgs e) //pharm button
         {
          //   this.Hide();
