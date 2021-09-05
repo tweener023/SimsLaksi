@@ -91,5 +91,16 @@
     "MedQtyString": "",
     "Price": 14.1,
     "UserJmbg": "1"
+  },
+  {
+    "Id": 42,
+    "Pharmacist": "Apotekarko Apotekarkovic",
+    "DateAndTime": "05.00.2021.",
+    "MedQty": {
+      "Brufen": 1
+    },
+    "MedQtyString": "Brufen: 1",
+    "Price": 12.43,
+    "UserJmbg": "1"
   }
 ]

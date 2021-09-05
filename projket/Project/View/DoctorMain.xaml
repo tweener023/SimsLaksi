@@ -8,48 +8,52 @@
         Title="Doktor" Height="450" Width="800">
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
-            <TabItem Header="Lekovi">
-                <Grid Background="#FFE5E5E5">
-                    <StackPanel>
+            <TabItem Header="Lekovi" Background="#FF8585B1">
+                <Grid Background="#FFAEAEEA">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="203*"/>
+                        <ColumnDefinition Width="59*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.ColumnSpan="2" Margin="0,0,0.4,0.2">
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po šifri:</Label>
-                            <TextBox x:Name="searchByCode" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">5452</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByCode"/>
+                            <TextBox x:Name="searchByCode" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3" Text="1"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByCode" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po imenu:</Label>
-                            <TextBox x:Name="searchByName" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByName"/>
+                            <TextBox x:Name="searchByName" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3">Brufen</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByName" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po proizvođaču:</Label>
-                            <TextBox x:Name="searchByManufacturer" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Idk</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByManufacturer"/>
+                            <TextBox x:Name="searchByManufacturer" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3" Text="Hemofarm"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByManufacturer" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po ceni:</Label>
-                            <TextBox x:Name="searchByPriceFrom" Width="80" HorizontalAlignment="Left" Margin="5,0,0,0">From</TextBox>
-                            <TextBox x:Name="searchByPriceTo" Width="80" HorizontalAlignment="Left" Margin="5,0,0,0">To</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByPrice"/>
+                            <TextBox x:Name="searchByPriceFrom" Width="80" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3" Text="5"/>
+                            <TextBox x:Name="searchByPriceTo" Width="80" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3" Text="15"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByPrice" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po količini:</Label>
-                            <TextBox x:Name="searchByAmount" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">15</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByAmount"/>
+                            <TextBox x:Name="searchByAmount" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3">15</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByAmount" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po sastojcima:</Label>
-                            <TextBox x:Name="searchByIngredients" Width="300" HorizontalAlignment="Left" Margin="5,0,0,0">silicijum-dioksid amp; (magnezijum | kalcijum))</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByIngredients"/>
+                            <TextBox x:Name="searchByIngredients" Width="300" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3">silicijum-dioksid amp; (magnezijum | kalcijum))</TextBox>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByIngredients" Background="#FF8585B1"/>
                         </DockPanel>
                     </StackPanel>
                     <DataGrid x:Name="medicineDataGrid"
                             AutoGenerateColumns="False"
-                            IsReadOnly="True" Margin="10,232,0,20.2" Width="753" HorizontalAlignment="Left">
+                            IsReadOnly="True" Margin="10,232,0,20.2" Width="753" HorizontalAlignment="Left" Grid.ColumnSpan="2" Background="#FF8585B1" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Šifra"
+                            <DataGridTextColumn Header="Šifra" 
                             Binding="{Binding Code}" />
-                            <DataGridTextColumn Header="Ime"
+                            <DataGridTextColumn Header="Ime" 
                             Binding="{Binding Name}" />
                             <DataGridTextColumn Header="Proizvođač"
                             Binding="{Binding Manufacturer}" />
@@ -70,18 +74,18 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Sastojci">
-                <Grid Background="#FFE5E5E5">
+            <TabItem Header="Sastojci" Background="#FF8585B1">
+                <Grid Background="#FFAEAEEA">
                     <StackPanel>
                         <DockPanel Margin="5">
                             <Label Width="130">Pretraga po imenu:</Label>
                             <TextBox x:Name="searchIngredientByName" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchIngredientByName"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchIngredientByName" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="130">Pretraga po opisu:</Label>
-                            <TextBox x:Name="searchIngredientByDescription" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Some description idk</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchIngredientByDescription" />
+                            <TextBox x:Name="searchIngredientByDescription" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Text="Lek za glavobolju"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchIngredientByDescription" Background="#FF8585B1" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="130">Pretraga po leku:</Label>
@@ -94,12 +98,12 @@
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchIngredientByMedicine"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchIngredientByMedicine" Background="#FF8585B1"/>
                         </DockPanel>
                     </StackPanel>
                     <DataGrid x:Name="ingredientsDataGrid"
                             AutoGenerateColumns="False"
-                            IsReadOnly="True" Margin="10,130,0,122" Width="369" HorizontalAlignment="Left">
+                            IsReadOnly="True" Margin="10,130,0,122" Width="369" HorizontalAlignment="Left" Background="#FF8585B1">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Ime"
                             Binding="{Binding Name}" />
@@ -113,84 +117,90 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Dodaj pacijenta">
-                <Grid Background="#FFE5E5E5">
+            <TabItem Header="Dodaj pacijenta" Background="#FF8585B1">
+                <Grid Background="#FFAEAEEA">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="41*"/>
+                        <ColumnDefinition Width="352*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Margin="0,0,0.4,0.2">
+                    <StackPanel Margin="0,0,0.4,0.2" Grid.ColumnSpan="2">
                         <DockPanel Margin="5">
                             <Label Width="70">JMBG:</Label>
-                            <TextBox x:Name ="jmbgBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name ="jmbgBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFD8D8F6" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">Email:</Label>
-                            <TextBox x:Name ="emailBox"  Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name ="emailBox"  Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFD8D8F6" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">Šifra:</Label>
-                            <TextBox x:Name ="passwordBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name ="passwordBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFD8D8F6" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">Ime:</Label>
-                            <TextBox x:Name="firstnameBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name="firstnameBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFD8D8F6" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">Prezime:</Label>
-                            <TextBox x:Name ="lastnameBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                            <TextBox x:Name ="lastnameBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFD8D8F6" />
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="70">Broj telefona:</Label>
-                            <TextBox x:Name="phoneBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0"  />
+                            <TextBox x:Name="phoneBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFD8D8F6"  />
                         </DockPanel>
-                        <Button Content="Dodaj" Width="70" HorizontalAlignment="Left" Background="Green" Margin="5" Click="onRegisterPatient"/>
+                        <Button Content="Dodaj" Width="70" HorizontalAlignment="Left" Background="#FF8585B1" Margin="5" Click="onRegisterPatient"/>
                     </StackPanel>
                     <DataGrid x:Name="patientsDataGrid" 
                         AutoGenerateColumns="False"
                         IsReadOnly="True" Width="369" 
                         HorizontalAlignment="Left"
-                        Margin="361,5,0,15.2">
+                        Margin="278.771,5,0,15.2" Grid.Column="1" Background="#FF8585B1">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="JMBG"
                                 Binding="{Binding Jmbg}" />
-                            <DataGridTextColumn Header="First Name"
+                            <DataGridTextColumn Header="Ime"
                                 Binding="{Binding FirstName}" />
-                            <DataGridTextColumn Header="Last Name"
+                            <DataGridTextColumn Header="Prezime"
                                 Binding="{Binding LastName}" />
                             <DataGridTextColumn Header="Email"
                                 Binding="{Binding Email}" />
-                            <DataGridTextColumn Header="Phone"
+                            <DataGridTextColumn Header="Broj telefona"
                                 Binding="{Binding Phone}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Prihvati/odbij lek">
-                <Grid Background="#FFE5E5E5">
+            <TabItem Header="Prihvati/odbij lek" Height="23" Margin="-2,-2,-2.4,-0.2" VerticalAlignment="Bottom" Background="#FF8585B1">
+                <Grid Background="#FFAEAEEA">
                     <StackPanel>
-                        <Label Content="Lekovi koji cekaju da budu prihvaceni: " />
+                        <Label Content="Neklasifikovani lekovi" FontWeight="Bold" FontStyle="Italic" />
                         <DataGrid x:Name="waitingMedicineDataGrid"
                                 AutoGenerateColumns="False"
-                                IsReadOnly="True" Margin="5" Width="369" Height="190" HorizontalAlignment="Left">
+                                IsReadOnly="True" Margin="5,5,0,5" Width="771" Height="190" HorizontalAlignment="Left" Background="#FF8585B1">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Code"
+                                <DataGridTextColumn Header="Sifra"
                                 Binding="{Binding Code}" />
-                                <DataGridTextColumn Header="Name"
+                                <DataGridTextColumn Header="Ime"
                                 Binding="{Binding Name}" />
-                                <DataGridTextColumn Header="Manufacturer"
+                                <DataGridTextColumn Header="Proizvodjac"
                                 Binding="{Binding Manufacturer}" />
-                                <DataGridTextColumn Header="Price"
+                                <DataGridTextColumn Header="Cena"
                                 Binding="{Binding Price}" />
-                                <DataGridTextColumn Header="Amount"
+                                <DataGridTextColumn Header="Kolicina"
                                 Binding="{Binding Amount}" />
-                                <DataGridTextColumn Header="Ingredients"
-                                Binding="{Binding Ingredients}" />
+                                <DataGridTemplateColumn Header="Sastojci">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ItemsControl ItemsSource="{Binding Ingredients}" DisplayMemberPath="Name"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <TextBox x:Name="rejectMessage"  Width="370" Height="40" HorizontalAlignment="Left" Text="Razlog odbijanja..."/>
+                        <TextBox x:Name="rejectMessage"  Width="771" Height="40" HorizontalAlignment="Left" Text="Razlog odbijanja..." Background="#FF8585B1" Margin="5,0,0,0"/>
                         <DockPanel>
-                            <Button Background="Green" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Prihvati"  Click="onAcceptMedicine"/>
-                            <Button Background="Red" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Odbij" Click="onRejectMedicine" />
+                            <Button Background="#FF7F7FEB" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Prihvati"  Click="onAcceptMedicine"/>
+                            <Button Background="#FFBD00FF" HorizontalAlignment="Left" Margin="5" Width="70" Height="30" Content="Odbij" Click="onRejectMedicine" />
                         </DockPanel>
                     </StackPanel>
                 </Grid>
