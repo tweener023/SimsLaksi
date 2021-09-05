@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project.View"
         mc:Ignorable="d"
-        Title="Apotekar" Height="450" Width="800">
-    <Grid>
-        <TabControl HorizontalAlignment="Left" Height="749" VerticalAlignment="Top" Width="792">
-            <TabItem Header="Lekovi">
-                <Grid Background="#FFE5E5E5">
+        Title="Apotekar" Height="786.4" Width="802.4">
+    <Grid Margin="0,0,0,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="92*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <TabControl HorizontalAlignment="Left" Height="749" VerticalAlignment="Top" Width="792" Margin="0,0,0,-329" Grid.RowSpan="2">
+            <TabItem Header="Lekovi" Background="#FF8585B1">
+                <Grid Background="#FFAEAEEA">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="12*"/>
                         <ColumnDefinition Width="23*"/>
@@ -19,39 +23,39 @@
                         <DockPanel Margin="5">
                             <Label Width="150">Pretrazi po sifri:</Label>
                             <TextBox x:Name="searchByCode" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">5452</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByCode"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByCode" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretrazi po imenu:</Label>
                             <TextBox x:Name="searchByName" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByName"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByName" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po proizvodjacu:</Label>
-                            <TextBox x:Name="searchByManufacturer" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Idk</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByManufacturer"/>
+                            <TextBox x:Name="searchByManufacturer" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Text="Hemofarm"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByManufacturer" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po ceni:</Label>
-                            <TextBox x:Name="searchByPriceFrom" Width="72" HorizontalAlignment="Left" Margin="5,0,0,0">From</TextBox>
-                            <TextBox x:Name="searchByPriceTo" Width="72" HorizontalAlignment="Left" Margin="5,0,0,0">To</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="6,0,0,0" Content="Pretrazi" Click="onSearchMedicineByPrice"/>
+                            <TextBox x:Name="searchByPriceFrom" Width="72" HorizontalAlignment="Left" Margin="5,0,0,0" Text="3"/>
+                            <TextBox x:Name="searchByPriceTo" Width="72" HorizontalAlignment="Left" Margin="5,0,0,0" Text="10"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="6,0,0,0" Content="Pretrazi" Click="onSearchMedicineByPrice" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po kolicini:</Label>
                             <TextBox x:Name="searchByAmount" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">15</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByAmount"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByAmount" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po sastojcima:</Label>
                             <TextBox x:Name="searchByIngredient" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" Text="sicilijum-dioksid"/>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByIngredients"/>
-                            <Button Background="Red" Content="Obrisi lek" HorizontalAlignment="Right" Width="111" Click="onDeleteMedicine" />
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByIngredients" Background="#FF8585B1"/>
+                            <Button Background="#FF8585B1" Content="Obrisi lek" HorizontalAlignment="Right" Width="111" Click="onDeleteMedicine" />
                         </DockPanel>
                     </StackPanel>
                     <DataGrid x:Name="medicineDataGrid"
                             AutoGenerateColumns="False"
-                            IsReadOnly="True" Margin="10,232,0,20" Width="766" HorizontalAlignment="Left" Grid.ColumnSpan="3">
+                            IsReadOnly="True" Margin="10,232,0,20" Width="766" HorizontalAlignment="Left" Grid.ColumnSpan="3" Background="#FF8585B1">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Sifra"
                             Binding="{Binding Code}" />
@@ -77,8 +81,8 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Sastojci">
-                <Grid Background="#FFE5E5E5">
+            <TabItem Header="Sastojci" Background="#FF8585B1">
+                <Grid Background="#FFAEAEEA">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
@@ -86,12 +90,12 @@
                         <DockPanel Margin="5">
                             <Label Width="130">Pretraga po imenu:</Label>
                             <TextBox x:Name="searchIngredientByName" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">kofein</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchIngredientByName"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchIngredientByName" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="130">Pretraga po opisu:</Label>
                             <TextBox x:Name="searchIngredientByDescription" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0">Some description idk</TextBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchIngredientByDescription"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchIngredientByDescription" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="130">Pretraga po leku:</Label>
@@ -104,12 +108,12 @@
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
-                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchIngredientByMedicine"/>
+                            <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Click="onSearchIngredientByMedicine" Background="#FF8585B1"/>
                         </DockPanel>
                     </StackPanel>
                     <DataGrid x:Name="ingredientsDataGrid"
                             AutoGenerateColumns="False"
-                            IsReadOnly="True" Margin="10,130,0,122" Width="388" HorizontalAlignment="Left">
+                            IsReadOnly="True" Margin="10,130,0,122" Width="388" HorizontalAlignment="Left" Background="#FF8585B1">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Ime"
                             Binding="{Binding Name}" />
@@ -123,8 +127,8 @@
             </TabItem>
 
 
-            <TabItem Header="Dodaj lek">
-                <Grid Background="#FFE5E5E5">
+            <TabItem Header="Dodaj lek" Background="#FF8585B1">
+                <Grid Background="#FFAEAEEA">
                     <StackPanel>
                         <DockPanel Margin="5">
                             <Label Width="90">Sifra:</Label>
@@ -150,18 +154,18 @@
                             <Label Width="90">Sastojci:</Label>
                             <TextBox x:Name="registerIngredientsBox" Text="prvi,drugi,treci" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0" />
                         </DockPanel>
-                        <Button Content="Dodaj" Width="70" HorizontalAlignment="Left" Background="Green" Margin="5" Click="onRegisterMedicine"/>
+                        <Button Content="Dodaj" Width="70" HorizontalAlignment="Left" Background="#FF8585B1" Margin="5" Click="onRegisterMedicine"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Prihvaceni/odbijeni lekovi">
-                <Grid Background="#FFE5E5E5">
+            <TabItem Header="Prihvaceni/odbijeni lekovi" Background="#FF8585B1">
+                <Grid Background="#FFAEAEEA">
                     <StackPanel>
                         <Label Content="Prihvaceni lekovi"  />
                         <DataGrid x:Name="acceptedMedicineDataGrid" HorizontalAlignment="Left"
                                 AutoGenerateColumns="False" Width="400"
-                                IsReadOnly="True" Grid.ColumnSpan="3">
+                                IsReadOnly="True" Grid.ColumnSpan="3" Height="106" Background="#FF8585B1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Sifra"
                                 Binding="{Binding Code}" />
@@ -187,7 +191,7 @@
                         <Label Content="Odbijeni lekovi"  />
                         <DataGrid x:Name="rejectedMedicineDataGrid"
                                 AutoGenerateColumns="False" HorizontalAlignment="Left" Width="400"
-                                IsReadOnly="True" Grid.ColumnSpan="3">
+                                IsReadOnly="True" Grid.ColumnSpan="3" Height="121" Background="#FF8585B1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Sifra"
                                 Binding="{Binding Code}" />
@@ -219,33 +223,33 @@
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po sifri:</Label>
                             <TextBox x:Name="searchByCodeRA" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0">5452</TextBox>
-                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByCodeRA"/>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByCodeRA" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po imenu:</Label>
                             <TextBox x:Name="searchByNameRA" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0">Brufen</TextBox>
-                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByNameRA"/>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByNameRA" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po proizvodjacu:</Label>
                             <TextBox x:Name="searchByManufacturerRA" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0">Idk</TextBox>
-                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByManufacturerRA"/>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByManufacturerRA" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po ceni:</Label>
                             <TextBox x:Name="searchByPriceFromRA" Width="47" HorizontalAlignment="Left" Margin="5,0,0,0">From</TextBox>
                             <TextBox x:Name="searchByPriceToRA" Width="47" HorizontalAlignment="Left" Margin="5,0,0,0">To</TextBox>
-                            <Button Width="65" HorizontalAlignment="Left" Margin="6,0,0,0" Content="Pretrazi" Click="onSearchMedicineByPriceRA"/>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="6,0,0,0" Content="Pretrazi" Click="onSearchMedicineByPriceRA" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po kolicini:</Label>
                             <TextBox x:Name="searchByAmountRA" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0">15</TextBox>
-                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByAmountRA"/>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByAmountRA" Background="#FF8585B1"/>
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po sastojcima:</Label>
                             <TextBox x:Name="searchByIngredientRA" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Text="sicilijum-dioksid"/>
-                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByIngredientsRA"/>
+                            <Button Width="65" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretrazi" Click="onSearchMedicineByIngredientsRA" Background="#FF8585B1"/>
                         </DockPanel>
                     </StackPanel>
                 </Grid>
