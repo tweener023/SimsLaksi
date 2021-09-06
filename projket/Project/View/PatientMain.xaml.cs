@@ -67,37 +67,7 @@ namespace Project.View
             ingredientsDataGrid.ItemsSource = ingredientsToShow;
         }
 
-        #region cart functions
-        private void onAddToCart(object sender, RoutedEventArgs e)
-        {
-            // otvara se messagebox tj neki dialog box u kojem ce da unese kolicinu
-            // Interaction.InputBox("Amount?", "mrs", "69");
-
-            Medicine medToCart = (Medicine)medicineDataGrid.SelectedItem;
-
-            int medAmount = Int32.Parse(medicineAmount.Text);
-
-            if (medAmount > medToCart.Amount || medAmount > 5)
-            {
-                MessageBox.Show("you cant order more than 5!");
-            }
-            else
-            {
-                medToCart.Amount = Int32.Parse(medicineAmount.Text);
-                cartList.Add(medToCart);
-                MessageBox.Show("medicine added to cart!");
-            }
-        }
-
-        private void onCheckout(object sender, RoutedEventArgs e)
-        {
-            Checkout checkoutWindow = new Checkout(cartList, currentUser);
-            checkoutWindow.Show();
-        }
-
-        #endregion
-
-
+ 
         #region medicine search
         private void onSearchMedicineByCode(object sender, RoutedEventArgs e)
         {
@@ -284,6 +254,34 @@ namespace Project.View
 
         #endregion
 
-    }
+        #region add to cart functionalities
+        private void onAddToCart(object sender, RoutedEventArgs e)
+        {
+            // otvara se messagebox tj neki dialog box u kojem ce da unese kolicinu
+            // Interaction.InputBox("Amount?", "mrs", "69");
 
+            Medicine medToCart = (Medicine)medicineDataGrid.SelectedItem;
+
+            int medAmount = Int32.Parse(medicineAmount.Text);
+
+            if (medAmount > medToCart.Amount || medAmount > 5)
+            {
+                MessageBox.Show("you cant order more than 5!");
+            }
+            else
+            {
+                medToCart.Amount = Int32.Parse(medicineAmount.Text);
+                cartList.Add(medToCart);
+                MessageBox.Show("medicine added to cart!");
+            }
+        }
+
+        private void onCheckout(object sender, RoutedEventArgs e)
+        {
+            Checkout checkoutWindow = new Checkout(cartList, currentUser);
+            checkoutWindow.Show();
+        }
+
+        #endregion
+    }
 }

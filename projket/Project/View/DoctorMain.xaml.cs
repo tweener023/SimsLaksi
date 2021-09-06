@@ -59,38 +59,9 @@ namespace Project.View
             ingredientsDataGrid.ItemsSource = ingredientsToShow;
         }
 
-        #region patient functions
-        private void onRegisterPatient(object sender, RoutedEventArgs e)
-        {
-            string jmbg = jmbgBox.Text;
-            string email = emailBox.Text;
-            string password = passwordBox.Text;
-            string firstname = firstnameBox.Text;
-            string lastname = lastnameBox.Text;
-            string phone = phoneBox.Text;
-
-            flag = false;
-
-            foreach (var patient in patientsToShow)
-            {
-                if (jmbg == patient.Jmbg || email == patient.Email)
-                {
-                    MessageBox.Show("paatient with this email or jmbg already exists!");
-                    flag = true;
-                }
-            }
-
-            if (!flag)
-            {
-                app.userController.RegisterPatient(jmbg, email, password, firstname, lastname, phone);
-                MessageBox.Show("Patient created");
-            }
-        }
-
-        #endregion
 
 
-        #region medicine functions
+        #region functionalities on medicines, accept, reject
         private void onAcceptMedicine(object sender, RoutedEventArgs e)
         {
             Medicine medToUp = (Medicine)waitingMedicineDataGrid.SelectedItem;
@@ -125,8 +96,87 @@ namespace Project.View
 
         #endregion
 
+        #region functionalities on patient
+        private void onRegisterPatient(object sender, RoutedEventArgs e)
+        {
+            string jmbg = jmbgBox.Text;
+            string email = emailBox.Text;
+            string password = passwordBox.Text;
+            string firstname = firstnameBox.Text;
+            string lastname = lastnameBox.Text;
+            string phone = phoneBox.Text;
 
-        #region medicine search
+            flag = false;
+
+            foreach (var patient in patientsToShow)
+            {
+                if (jmbg == patient.Jmbg || email == patient.Email)
+                {
+                    MessageBox.Show("paatient with this email or jmbg already exists!");
+                    flag = true;
+                }
+            }
+
+            if (!flag)
+            {
+                app.userController.RegisterPatient(jmbg, email, password, firstname, lastname, phone);
+                MessageBox.Show("Patient created");
+            }
+        }
+
+        #endregion
+        #region searches on ingredients
+        private void onSearchIngredientByName(object sender, RoutedEventArgs e)
+        {
+            if (searchIngredientByName.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Ingredient> ingredientsByName = new List<Ingredient>();
+            foreach (var i in ingredientsToShow)
+            {
+                if (i.Name.ToLower().Contains(searchIngredientByName.Text.ToLower()))
+                {
+                    ingredientsByName.Add(i);
+                }
+            }
+            ingredientsDataGrid.ItemsSource = ingredientsByName;
+        }
+
+        private void onSearchIngredientByDescription(object sender, RoutedEventArgs e)
+        {
+            if (searchIngredientByDescription.Text == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Ingredient> ingredientsByDesc = new List<Ingredient>();
+            foreach (var i in ingredientsToShow)
+            {
+                if (i.Description.ToLower().Contains(searchIngredientByDescription.Text.ToLower()))
+                {
+                    ingredientsByDesc.Add(i);
+                }
+            }
+
+            ingredientsDataGrid.ItemsSource = ingredientsByDesc;
+        }
+
+        private void onSearchIngredientByMedicine(object sender, RoutedEventArgs e)
+        {
+            foreach (var medicine in allMedicines)
+            {
+                if (medicine.Name == ((Medicine)(medicineCombo.SelectedItem)).Name)
+                {
+                    ingredientsDataGrid.ItemsSource = medicine.Ingredients;
+                }
+            }
+        }
+
+        #endregion
+
+        #region searches on medicines
         private void onSearchMedicineByCode(object sender, RoutedEventArgs e)
         {
             if (searchByCode.Text == "")
@@ -256,58 +306,6 @@ namespace Project.View
             }
 
             medicineDataGrid.ItemsSource = acceptedMedicineByIngredient;
-        }
-
-        #endregion
-
-
-        #region ingredient search
-        private void onSearchIngredientByName(object sender, RoutedEventArgs e)
-        {
-            if (searchIngredientByName.Text == "")
-            {
-                MessageBox.Show("You must enter a valid value.");
-            }
-
-            List<Ingredient> ingredientsByName = new List<Ingredient>();
-            foreach (var i in ingredientsToShow)
-            {
-                if (i.Name.ToLower().Contains(searchIngredientByName.Text.ToLower()))
-                {
-                    ingredientsByName.Add(i);
-                }
-            }
-            ingredientsDataGrid.ItemsSource = ingredientsByName;
-        }
-
-        private void onSearchIngredientByDescription(object sender, RoutedEventArgs e)
-        {
-            if (searchIngredientByDescription.Text == "")
-            {
-                MessageBox.Show("You must enter a valid value.");
-            }
-
-            List<Ingredient> ingredientsByDesc = new List<Ingredient>();
-            foreach (var i in ingredientsToShow)
-            {
-                if (i.Description.ToLower().Contains(searchIngredientByDescription.Text.ToLower()))
-                {
-                    ingredientsByDesc.Add(i);
-                }
-            }
-
-            ingredientsDataGrid.ItemsSource = ingredientsByDesc;
-        }
-
-        private void onSearchIngredientByMedicine(object sender, RoutedEventArgs e)
-        {
-            foreach (var medicine in allMedicines)
-            {
-                if (medicine.Name == ((Medicine)(medicineCombo.SelectedItem)).Name)
-                {
-                    ingredientsDataGrid.ItemsSource = medicine.Ingredients;
-                }
-            }
         }
 
         #endregion
