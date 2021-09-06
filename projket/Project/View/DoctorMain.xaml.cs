@@ -59,8 +59,6 @@ namespace Project.View
             ingredientsDataGrid.ItemsSource = ingredientsToShow;
         }
 
-
-
         #region functionalities on medicines, accept, reject
         private void onAcceptMedicine(object sender, RoutedEventArgs e)
         {
@@ -125,6 +123,7 @@ namespace Project.View
         }
 
         #endregion
+
         #region searches on ingredients
         private void onSearchIngredientByName(object sender, RoutedEventArgs e)
         {

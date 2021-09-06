@@ -39,8 +39,8 @@ namespace Project.View
             allMedicines = app.medicineController.GetAll();
             medicineDataGrid.ItemsSource = allMedicines;
 
-            acceptedMedicine = app.medicineController.GetByValidation(true); // trebaju nam ovi koji su prihvaceni accepted=true
-            rejectedMedicine = app.medicineController.GetByValidation(false); // trebaju nam ovi koji su prihvaceni accepted=false
+            acceptedMedicine = app.medicineController.GetByValidation(true); 
+            rejectedMedicine = app.medicineController.GetByValidation(false); 
 
             acceptedMedicineDataGrid.ItemsSource = acceptedMedicine;
             rejectedMedicineDataGrid.ItemsSource = rejectedMedicine;
@@ -574,7 +574,5 @@ namespace Project.View
 
         #endregion
 
-
- 
     }
 }
