@@ -559,7 +559,7 @@ namespace Project.View
                 ingredientToUpdate = app.ingredientController.GetByName(ingredientName);
                 if (ingredientToUpdate == null)
                 {
-                    MessageBox.Show("Morate uneti validno ime!");
+                    MessageBox.Show("Morate uneti validno ime sastojka!");
                     flag = true;
                     //break;
                 }

@@ -59,6 +59,7 @@ namespace Project.View
             ingredientsDataGrid.ItemsSource = ingredientsToShow;
         }
 
+        #region patient functions
         private void onRegisterPatient(object sender, RoutedEventArgs e)
         {
             string jmbg = jmbgBox.Text;
@@ -74,7 +75,7 @@ namespace Project.View
             {
                 if (jmbg == patient.Jmbg || email == patient.Email)
                 {
-                    MessageBox.Show("Ne moze");
+                    MessageBox.Show("paatient with this email or jmbg already exists!");
                     flag = true;
                 }
             }
@@ -86,11 +87,51 @@ namespace Project.View
             }
         }
 
+        #endregion
+
+
+        #region medicine functions
+        private void onAcceptMedicine(object sender, RoutedEventArgs e)
+        {
+            Medicine medToUp = (Medicine)waitingMedicineDataGrid.SelectedItem;
+
+            if (medToUp == null)
+            {
+                MessageBox.Show("you must select an item!");
+            }
+            else
+            {
+                app.medicineController.AcceptMedicine(medToUp);
+                MessageBox.Show("Medicine accepted!");
+            }
+        }
+
+        private void onRejectMedicine(object sender, RoutedEventArgs e)
+        {
+            Medicine medToUp = (Medicine)waitingMedicineDataGrid.SelectedItem;
+
+            if (medToUp == null)
+            {
+                MessageBox.Show("you must select an item!");
+
+            }
+            else
+            {
+                app.medicineController.RejectMedicine(medToUp);
+                MessageBox.Show("Medicine rejected with message: " + rejectMessage.Text);
+                rejectMessage.Text = "";
+            }
+        }
+
+        #endregion
+
+
+        #region medicine search
         private void onSearchMedicineByCode(object sender, RoutedEventArgs e)
         {
             if (searchByCode.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByCode = new List<Medicine>();
@@ -109,7 +150,7 @@ namespace Project.View
 
             if (searchByName.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByName = new List<Medicine>();
@@ -127,7 +168,7 @@ namespace Project.View
         {
             if (searchByManufacturer.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByMnf = new List<Medicine>();
@@ -145,14 +186,23 @@ namespace Project.View
         {
             if (searchByPriceFrom.Text == "" || searchByPriceTo.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
+
+
             List<Medicine> acceptedMedicinesByPrice = new List<Medicine>();
             foreach (var m in acceptedMedicine)
             {
-                if (m.Price > float.Parse(searchByPriceFrom.Text) && m.Price < float.Parse(searchByPriceTo.Text))
+                try
                 {
-                    acceptedMedicinesByPrice.Add(m);
+                    if (m.Price > float.Parse(searchByPriceFrom.Text) && m.Price < float.Parse(searchByPriceTo.Text))
+                    {
+                        acceptedMedicinesByPrice.Add(m);
+                    }
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("You must enter a valid value.");
                 }
             }
             medicineDataGrid.ItemsSource = acceptedMedicinesByPrice;
@@ -162,15 +212,22 @@ namespace Project.View
         {
             if (searchByAmount.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Medicine> acceptedMedicinesByAmount = new List<Medicine>();
             foreach (var m in acceptedMedicine)
             {
-                if (m.Amount == Int32.Parse(searchByAmount.Text))
+                try
                 {
-                    acceptedMedicinesByAmount.Add(m);
+                    if (m.Amount == Int32.Parse(searchByAmount.Text))
+                    {
+                        acceptedMedicinesByAmount.Add(m);
+                    }
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("You must enter a valid value.");
                 }
             }
             medicineDataGrid.ItemsSource = acceptedMedicinesByAmount;
@@ -178,47 +235,38 @@ namespace Project.View
 
         private void onSearchMedicineByIngredients(object sender, RoutedEventArgs e)
         {
+            string ingredientToSearch = searchByIngredient.Text;
 
+            if (ingredientToSearch == "")
+            {
+                MessageBox.Show("You must enter a valid value.");
+            }
+
+            List<Medicine> acceptedMedicineByIngredient = new List<Medicine>();
+
+            foreach (var medicine in acceptedMedicine)
+            {
+                foreach (var ingredient in medicine.Ingredients)
+                {
+                    if (ingredientToSearch == ingredient.Name)
+                    {
+                        acceptedMedicineByIngredient.Add(medicine);
+                    }
+                }
+            }
+
+            medicineDataGrid.ItemsSource = acceptedMedicineByIngredient;
         }
 
-        private void onAcceptMedicine(object sender, RoutedEventArgs e)
-        {
-            Medicine medToUp = (Medicine)waitingMedicineDataGrid.SelectedItem;
+        #endregion
 
-            if (medToUp == null)
-            {
-                MessageBox.Show("Morate odabrati lek");
-            }
-            else
-            {
-                app.medicineController.AcceptMedicine(medToUp);
-                MessageBox.Show("Medicine accepted!");
 
-            }
-        }
-
-        private void onRejectMedicine(object sender, RoutedEventArgs e)
-        {
-            Medicine medToUp = (Medicine)waitingMedicineDataGrid.SelectedItem;
-
-            if (medToUp == null)
-            {
-                MessageBox.Show("Morate odabrati lek");
-
-            }
-            else
-            {
-                app.medicineController.RejectMedicine(medToUp);
-                MessageBox.Show("Medicine rejected with message: " + rejectMessage.Text);
-                rejectMessage.Text = "";
-            }
-        }
-
+        #region ingredient search
         private void onSearchIngredientByName(object sender, RoutedEventArgs e)
         {
             if (searchIngredientByName.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Ingredient> ingredientsByName = new List<Ingredient>();
@@ -236,7 +284,7 @@ namespace Project.View
         {
             if (searchIngredientByDescription.Text == "")
             {
-                MessageBox.Show("Morate uneti validnu vrednost.");
+                MessageBox.Show("You must enter a valid value.");
             }
 
             List<Ingredient> ingredientsByDesc = new List<Ingredient>();
@@ -261,5 +309,7 @@ namespace Project.View
                 }
             }
         }
+
+        #endregion
     }
 }

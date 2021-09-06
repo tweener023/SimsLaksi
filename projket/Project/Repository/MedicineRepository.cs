@@ -58,12 +58,7 @@ namespace Repository
 
             // ovo proveri da li je dobro
             // ovo da bude u servisu
-            foreach (var ing in medicine.Ingredients)
-            {
-                ing.CountInMedicines++;
-                ingredientRepository.UpdateIngredient(ing);
-                WriteToJson();
-            }
+         
 
         }
 

@@ -22,7 +22,7 @@
 
             <DataGrid x:Name="cartDataGrid"
                             AutoGenerateColumns="False"
-                            IsReadOnly="True" Width="579" Height="250" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+                            IsReadOnly="True" Width="579" Height="250" HorizontalAlignment="Left" Grid.ColumnSpan="2" Background="#FF8585B1">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Ime"
                             Binding="{Binding Name}" />
@@ -34,7 +34,7 @@
                             Binding="{Binding Amount}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Content="Poruci" Click="onOrder" Width="70" Height="30" />
+            <Button Content="Poruci" Click="onOrder" Width="70" Height="30" Background="#FF8585B1" />
         </StackPanel>
     </Grid>
 </Window>

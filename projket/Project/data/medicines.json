@@ -2,23 +2,23 @@
   {
     "Code": "AF345612",
     "Name": "Brufen",
-    "Manufacturer": "Braca i Sinovi",
+    "Manufacturer": "Hemofarm",
     "Price": 12.43,
     "Amount": 14,
     "Ingredients": [
       {
-        "Name": "Opasan sastojak1",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "kalcijum",
+        "Description": "Lek za glavobolju",
         "CountInMedicines": 0
       },
       {
-        "Name": "Opasan sastojak2",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "magnezijum",
+        "Description": "Lek za glavobolju",
         "CountInMedicines": 0
       },
       {
-        "Name": "Opasan sastojak3",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "silicijum-dioksid",
+        "Description": "Lek za glavobolju",
         "CountInMedicines": 0
       }
     ],
@@ -28,23 +28,23 @@
   {
     "Code": "DFSJU94021BKJ",
     "Name": "Skopril",
-    "Manufacturer": "Braca i Sinovi",
+    "Manufacturer": "Hemofarm",
     "Price": 22.77,
     "Amount": 9,
     "Ingredients": [
       {
-        "Name": "Skopril sastojak1",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "taurin",
+        "Description": "Lek za pritisak",
         "CountInMedicines": 0
       },
       {
-        "Name": "Skopril sastojak2",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "kofein",
+        "Description": "Lek za pritisak",
         "CountInMedicines": 0
       },
       {
-        "Name": "Skopril sastojak3",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "magnezijum",
+        "Description": "Lek za pritisak",
         "CountInMedicines": 0
       }
     ],
@@ -53,19 +53,19 @@
   },
   {
     "Code": "HFDA7HJ432KB",
-    "Name": "Jabuka",
-    "Manufacturer": "Vocnjak",
+    "Name": "Rivotril",
+    "Manufacturer": "Fabrika Zrenjanin",
     "Price": 5.43,
     "Amount": 27,
     "Ingredients": [
       {
-        "Name": "Opasan sastojak1",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "silicijum-dioksid",
+        "Description": "Lek za smirenje",
         "CountInMedicines": 0
       },
       {
-        "Name": "Opasan sastojak2",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "magnezijum",
+        "Description": "Lek za smirenje",
         "CountInMedicines": 0
       }
     ],
@@ -74,28 +74,28 @@
   },
   {
     "Code": "GFJ43132H41",
-    "Name": "Panklav",
-    "Manufacturer": "Braca i Sinovi",
+    "Name": "Nimulid",
+    "Manufacturer": "Hemofarm",
     "Price": 19.43,
     "Amount": 54,
     "Ingredients": [
       {
-        "Name": "Panklav sastojak1",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "kalcijum",
+        "Description": "Lek za glavobolju",
         "CountInMedicines": 0
       },
       {
-        "Name": "Panklav sastojak2",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "magnezijum",
+        "Description": "Lek za glavobolju",
         "CountInMedicines": 0
       },
       {
-        "Name": "Panklav sastojak3",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "Nimulid sastojak3",
+        "Description": "Lek za glavobolju",
         "CountInMedicines": 0
       }
     ],
-    "Accepted": false,
+    "Accepted": true,
     "Deleted": false
   },
   {
@@ -106,17 +106,17 @@
     "Amount": 54,
     "Ingredients": [
       {
-        "Name": "Panklav sastojak1",
+        "Name": "Aktivni ugalj sastojak1",
         "Description": "Lorem ipsum nananana....",
         "CountInMedicines": 0
       },
       {
-        "Name": "Panklav sastojak2",
+        "Name": "Aktivni ugalj sastojak2",
         "Description": "Lorem ipsum nananana....",
         "CountInMedicines": 0
       },
       {
-        "Name": "Panklav sastojak3",
+        "Name": "Aktivni ugalj sastojak3",
         "Description": "Lorem ipsum nananana....",
         "CountInMedicines": 0
       }
@@ -153,24 +153,82 @@
   {
     "Code": "GFJ4312H4111",
     "Name": "Lorazepam",
-    "Manufacturer": "Braca i Sinovi",
+    "Manufacturer": "Fabrika Zrenjanin",
     "Price": 19.43,
     "Amount": 54,
     "Ingredients": [
       {
-        "Name": "Panklav sastojak1",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "Lorazepam sastojak1",
+        "Description": "Lek za smirenje",
         "CountInMedicines": 0
       },
       {
-        "Name": "Panklav sastojak2",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "Lorazepam sastojak2",
+        "Description": "Lek za smirenje",
         "CountInMedicines": 0
       },
       {
-        "Name": "Panklav sastojak3",
-        "Description": "Lorem ipsum nananana....",
+        "Name": "Lorazepam sastojak3",
+        "Description": "Lek za smirenje",
         "CountInMedicines": 0
+      }
+    ],
+    "Accepted": false,
+    "Deleted": false
+  },
+  {
+    "Code": "1B1A",
+    "Name": "LekDodatRucno",
+    "Manufacturer": "Nikolaj",
+    "Price": 15.0,
+    "Amount": 2,
+    "Ingredients": [
+      {
+        "Name": "kalcijum",
+        "Description": "kalcijum iz prirodnih izvora",
+        "CountInMedicines": 5
+      },
+      {
+        "Name": "taurin",
+        "Description": "sranje iz energetskih pica",
+        "CountInMedicines": 2
+      }
+    ],
+    "Accepted": false,
+    "Deleted": false
+  },
+  {
+    "Code": "2323",
+    "Name": "Nikolaj",
+    "Manufacturer": "Hemofarm",
+    "Price": 4552.0,
+    "Amount": 2,
+    "Ingredients": [
+      {
+        "Name": "kalcijum",
+        "Description": "kalcijum iz prirodnih izvora",
+        "CountInMedicines": 5
+      }
+    ],
+    "Accepted": false,
+    "Deleted": false
+  },
+  {
+    "Code": "11111",
+    "Name": "RucnoDodatLek",
+    "Manufacturer": "Hemofarm",
+    "Price": 133.0,
+    "Amount": 3,
+    "Ingredients": [
+      {
+        "Name": "kalcijum",
+        "Description": "kalcijum iz prirodnih izvora",
+        "CountInMedicines": 5
+      },
+      {
+        "Name": "taurin",
+        "Description": "sranje iz energetskih pica",
+        "CountInMedicines": 2
       }
     ],
     "Accepted": false,

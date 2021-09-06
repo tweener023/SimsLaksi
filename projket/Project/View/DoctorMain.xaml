@@ -43,7 +43,7 @@
                         </DockPanel>
                         <DockPanel Margin="5">
                             <Label Width="150">Pretraga po sastojcima:</Label>
-                            <TextBox x:Name="searchByIngredients" Width="300" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3">silicijum-dioksid amp; (magnezijum | kalcijum))</TextBox>
+                            <TextBox x:Name="searchByIngredient" Width="300" HorizontalAlignment="Left" Margin="5,0,0,0" Background="#FFC6C6F3">silicijum-dioksid amp; (magnezijum | kalcijum))</TextBox>
                             <Button Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Pretraži" Click="onSearchMedicineByIngredients" Background="#FF8585B1"/>
                         </DockPanel>
                     </StackPanel>
