@@ -52,9 +52,96 @@ namespace Project.View
             ingredientsDataGrid.ItemsSource = ingredientsToShow;
         }
 
+        #region funtionalities on medicine, delete, register
+
+        private void onDeleteMedicine(object sender, RoutedEventArgs e)
+        {
+            Medicine medToUp = (Medicine)medicineDataGrid.SelectedItem;
+
+            if (medToUp == null)
+            {
+                MessageBox.Show("Odaberite lek!");
+            }
+            else
+            {
+                app.medicineController.DeleteMedicine(medToUp);
+                MessageBox.Show("Lek obrisan");
+            }
+        }
+
+        private void onRegisterMedicine(object sender, RoutedEventArgs e)
+        {
+            string code = registerCodeBox.Text;
+            string name = registerNameBox.Text;
+            string manufacturer = registerManufacturerBox.Text;
+
+            string pri = registerPriceBox.Text;
+            float price = 0;
+            flag = false;
 
 
-        #region medicine search
+            foreach (var med in allMedicines)
+            {
+                if (code == med.Code)
+                {
+                    MessageBox.Show("Sifra mora biti jedinstvena!");
+                    flag = true;
+                }
+            }
+
+            try
+            {
+                price = float.Parse(pri);
+            }
+            catch (System.FormatException)
+            {
+                MessageBox.Show("Unesite validnu cenu!");
+                flag = true;
+            }
+
+            string amn = registerAmountBox.Text;
+            int amount = 0;
+            try
+            {
+                amount = Convert.ToInt32(amn);
+            }
+            catch (System.FormatException)
+            {
+                MessageBox.Show("Unesite validnu cenu!");
+                flag = true;
+            }
+
+            string ings = registerIngredientsBox.Text;
+            List<string> ingredientsString = ings.Split(',').ToList();
+
+            List<Ingredient> ingredients = new List<Ingredient>();
+            Ingredient ingredientToUpdate;
+
+            foreach (var ingredientName in ingredientsString)
+            {
+                ingredientToUpdate = app.ingredientController.GetByName(ingredientName);
+                if (ingredientToUpdate == null)
+                {
+                    MessageBox.Show("Morate uneti validno ime sastojka!");
+                    flag = true;
+                    //break;
+                }
+                else
+                {
+                    ingredientToUpdate.CountInMedicines++;
+                    ingredients.Add(ingredientToUpdate);
+                }
+            }
+
+            if (!flag)
+            {
+                app.medicineController.CreateMedicine(code, name, manufacturer, price, amount, ingredients);
+                MessageBox.Show("Lek dodat!");
+            }
+        }
+        #endregion
+
+        #region search on medicines
 
         private void onSearchMedicineByCode(object sender, RoutedEventArgs e)
         {
@@ -189,8 +276,59 @@ namespace Project.View
 
         #endregion
 
+        #region search on ingredients
 
-        #region rejected accepted medicine search
+        private void onSearchIngredientByName(object sender, RoutedEventArgs e)
+        {
+            if (searchIngredientByName.Text == "")
+            {
+                MessageBox.Show("Morate uneti validne vrednosti.");
+            }
+
+            List<Ingredient> ingredientsByName = new List<Ingredient>();
+            foreach (var i in ingredientsToShow)
+            {
+                if (i.Name.ToLower().Contains(searchIngredientByName.Text.ToLower()))
+                {
+                    ingredientsByName.Add(i);
+                }
+            }
+            ingredientsDataGrid.ItemsSource = ingredientsByName;
+        }
+
+        private void onSearchIngredientByDescription(object sender, RoutedEventArgs e)
+        {
+            if (searchIngredientByDescription.Text == "")
+            {
+                MessageBox.Show("Morate uneti validne vrednosti.");
+            }
+
+            List<Ingredient> ingredientsByDesc = new List<Ingredient>();
+            foreach (var i in ingredientsToShow)
+            {
+                if (i.Description.ToLower().Contains(searchIngredientByDescription.Text.ToLower()))
+                {
+                    ingredientsByDesc.Add(i);
+                }
+            }
+
+            ingredientsDataGrid.ItemsSource = ingredientsByDesc;
+        }
+
+        private void onSearchIngredientByMedicine(object sender, RoutedEventArgs e)
+        {
+            foreach (var medicine in allMedicines)
+            {
+                if (medicine.Name == ((Medicine)(medicineCombo.SelectedItem)).Name)
+                {
+                    ingredientsDataGrid.ItemsSource = medicine.Ingredients;
+                }
+            }
+        }
+
+        #endregion
+
+        #region search on rejected medicines
 
         private void onSearchMedicineByCodeRA(object sender, RoutedEventArgs e)
         {
@@ -437,146 +575,6 @@ namespace Project.View
         #endregion
 
 
-        #region ingredient search
-
-        private void onSearchIngredientByName(object sender, RoutedEventArgs e)
-        {
-            if (searchIngredientByName.Text == "")
-            {
-                MessageBox.Show("Morate uneti validne vrednosti.");
-            }
-
-            List<Ingredient> ingredientsByName = new List<Ingredient>();
-            foreach (var i in ingredientsToShow)
-            {
-                if (i.Name.ToLower().Contains(searchIngredientByName.Text.ToLower()))
-                {
-                    ingredientsByName.Add(i);
-                }
-            }
-            ingredientsDataGrid.ItemsSource = ingredientsByName;
-        }
-
-        private void onSearchIngredientByDescription(object sender, RoutedEventArgs e)
-        {
-            if (searchIngredientByDescription.Text == "")
-            {
-                MessageBox.Show("Morate uneti validne vrednosti.");
-            }
-
-            List<Ingredient> ingredientsByDesc = new List<Ingredient>();
-            foreach (var i in ingredientsToShow)
-            {
-                if (i.Description.ToLower().Contains(searchIngredientByDescription.Text.ToLower()))
-                {
-                    ingredientsByDesc.Add(i);
-                }
-            }
-
-            ingredientsDataGrid.ItemsSource = ingredientsByDesc;
-        }
-
-        private void onSearchIngredientByMedicine(object sender, RoutedEventArgs e)
-        {
-            foreach (var medicine in allMedicines)
-            {
-                if (medicine.Name == ((Medicine)(medicineCombo.SelectedItem)).Name)
-                {
-                    ingredientsDataGrid.ItemsSource = medicine.Ingredients;
-                }
-            }
-        }
-
-        #endregion
-
-        #region medicine functions
-
-        private void onDeleteMedicine(object sender, RoutedEventArgs e)
-        {
-            Medicine medToUp = (Medicine)medicineDataGrid.SelectedItem;
-
-            if (medToUp == null)
-            {
-                MessageBox.Show("Odaberite lek!");
-            }
-            else
-            {
-                app.medicineController.DeleteMedicine(medToUp);
-                MessageBox.Show("Lek obrisan");
-            }
-        }
-
-        private void onRegisterMedicine(object sender, RoutedEventArgs e)
-        {
-            string code = registerCodeBox.Text;
-            string name = registerNameBox.Text;
-            string manufacturer = registerManufacturerBox.Text;
-
-            string pri = registerPriceBox.Text;
-            float price = 0;
-            flag = false;
-
-
-            foreach (var med in allMedicines)
-            {
-                if (code == med.Code)
-                {
-                    MessageBox.Show("Sifra mora biti jedinstvena!");
-                    flag = true;
-                }
-            }
-
-            try
-            {
-                price = float.Parse(pri);
-            }
-            catch (System.FormatException)
-            {
-                MessageBox.Show("Unesite validnu cenu!");
-                flag = true;
-            }
-
-            string amn = registerAmountBox.Text;
-            int amount = 0;
-            try
-            {
-                amount = Convert.ToInt32(amn);
-            }
-            catch (System.FormatException)
-            {
-                MessageBox.Show("Unesite validnu cenu!");
-                flag = true;
-            }
-
-            string ings = registerIngredientsBox.Text;
-            List<string> ingredientsString = ings.Split(',').ToList();
-
-            List<Ingredient> ingredients = new List<Ingredient>();
-            Ingredient ingredientToUpdate;
-
-            foreach (var ingredientName in ingredientsString)
-            {
-                ingredientToUpdate = app.ingredientController.GetByName(ingredientName);
-                if (ingredientToUpdate == null)
-                {
-                    MessageBox.Show("Morate uneti validno ime sastojka!");
-                    flag = true;
-                    //break;
-                }
-                else
-                {
-                    ingredientToUpdate.CountInMedicines++;
-                    ingredients.Add(ingredientToUpdate);
-                }
-            }
-
-            if (!flag)
-            {
-                app.medicineController.CreateMedicine(code, name, manufacturer, price, amount, ingredients);
-                MessageBox.Show("Lek dodat!");
-            }
-        }
-        #endregion
-
+ 
     }
 }
