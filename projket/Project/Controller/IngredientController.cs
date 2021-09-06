@@ -1,8 +1,3 @@
-// File:    IngredientController.cs
-// Author:  User
-// Created: Saturday, June 12, 2021 12:00:17 PM
-// Purpose: Definition of Class IngredientController
-
 using System;
 using System.Collections.Generic;
 using Model;
@@ -22,14 +17,14 @@ namespace Controller
             _ingredientService = ingredientService;
         }
 
-        public List<Ingredient> GetAll()
-        {
-            return _ingredientService.GetAll();
-        }
-
+  
         public Ingredient GetByName(string ingredientName)
         {
             return _ingredientService.GetByName(ingredientName);
+        }
+        public List<Ingredient> GetAll()
+        {
+            return _ingredientService.GetAll();
         }
 
     }

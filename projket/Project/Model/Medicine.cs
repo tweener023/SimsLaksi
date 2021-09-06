@@ -1,8 +1,3 @@
-// File:    Medicine.cs
-// Author:  User
-// Created: Saturday, June 12, 2021 11:38:03 AM
-// Purpose: Definition of Class Medicine
-
 using System;
 using System.Collections.Generic;
 using Model;

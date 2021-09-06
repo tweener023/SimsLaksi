@@ -1,7 +1,3 @@
-// File:    UserRepository.cs
-// Author:  User
-// Purpose: Definition of Class UserRepository
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,30 +18,11 @@ namespace Repository
             ReadJson();
         }
 
-        public void RegisterPatient(User user)
-        {
-            _objects.Add(user);
-            WriteToJson();
-        }
-
         public List<User> GetAll()
         {
             ReadJson();
             return _objects;
         }
-
-        public List<User> GetAllPatients()
-        {
-            ReadJson();
-            return _objects.FindAll(obj => obj.UserType == 0);
-        }
-
-        public User GetByJmbg(string jmbg)
-        {
-            ReadJson();
-            return _objects.Find(obj => obj.Jmbg == jmbg);
-        }
-
 
         private void ReadJson()
         {
@@ -54,13 +31,31 @@ namespace Repository
                 File.Create(_fileLocation).Close();
             }
 
-            StreamReader r = new StreamReader(_fileLocation);
+            StreamReader streamReader = new StreamReader(_fileLocation);
 
-            string json = r.ReadToEnd();
+            string json = streamReader.ReadToEnd();
             if (json != "")
             {
                 _objects = JsonConvert.DeserializeObject<List<User>>(json);
             }
+        }
+
+        public void RegisterPatient(User user)
+        {
+            _objects.Add(user);
+            WriteToJson();
+        }
+
+        public List<User> GetAllPatients()
+        {
+            ReadJson();
+            return _objects.FindAll(obj => obj.UserType == 0);
+        }
+
+        public User GetByJmbg(string userJmbg)
+        {
+            ReadJson();
+            return _objects.Find(obj => obj.Jmbg == userJmbg);
         }
 
         private void WriteToJson()

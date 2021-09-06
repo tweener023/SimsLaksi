@@ -1,8 +1,3 @@
-// File:    MedicineRepository.cs
-// Author:  User
-// Created: Thursday, June 17, 2021 4:58:15 PM
-// Purpose: Definition of Class MedicineRepository
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +12,7 @@ namespace Repository
         string _fileLocation;
         private List<Medicine> _objects = new List<Medicine>();
 
-        IngredientRepository ingredientRepository = new IngredientRepository(); // treba mi da bih mogao da updateujem count pojavljivanja
+        IngredientRepository ingredientRepository = new IngredientRepository(); //potrebno da bih mogao da apdejtujem count ponavljanja
 
 
         public MedicineRepository()
@@ -38,9 +33,8 @@ namespace Repository
       
         public List<Medicine> GetByValidation(bool validation)
         {
-            // true = trazimo uslov accepted = true
-            // false = trazimo uslov accepted = false
-
+            // za true trazimo da je accepted = true
+            // za false trazimo da je accepted = false
             ReadJson();
             return _objects.FindAll(obj => obj.Accepted == validation && obj.Deleted != true);
         }
@@ -49,29 +43,27 @@ namespace Repository
         {
             throw new NotImplementedException();
         }
-      
-        public void CreateMedicine(Medicine medicine)
-        {
-            // kada se lek doda u json, moramo promeniti i ingredients count za svaki od ingredientsa koji se pojavljuje u novounetom leku
-            _objects.Add(medicine);
-            WriteToJson();
-
-            // ovo proveri da li je dobro
-            // ovo da bude u servisu
-         
-
-        }
-
+ 
         public Medicine UpdateMedicine(Medicine medToUpdate)
         {
-            // ReadJson();
             int index = _objects.FindIndex(obj => obj.Code == medToUpdate.Code);
             _objects[index] = medToUpdate;
             WriteToJson();
             return medToUpdate;
         }
 
-        
+        public void CreateMedicine(Medicine medicine)
+        {
+            // kada se lek doda u json, moramo promeniti i ingredients count za svaki od ingredientsa koji se pojavljuje u novounetom leku
+            _objects.Add(medicine);
+            WriteToJson();
+        }
+
+        private void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(_objects, Formatting.Indented);
+            File.WriteAllText(_fileLocation, json);
+        }
 
         private void ReadJson()
         {
@@ -80,19 +72,13 @@ namespace Repository
                 File.Create(_fileLocation).Close();
             }
 
-            StreamReader r = new StreamReader(_fileLocation);
+            StreamReader streamReader = new StreamReader(_fileLocation);
 
-            string json = r.ReadToEnd();
+            string json = streamReader.ReadToEnd();
             if (json != "")
             {
                 _objects = JsonConvert.DeserializeObject<List<Medicine>>(json);
             }
-        }
-
-        private void WriteToJson()
-        {
-            string json = JsonConvert.SerializeObject(_objects, Formatting.Indented);
-            File.WriteAllText(_fileLocation, json);
         }
     }
 }

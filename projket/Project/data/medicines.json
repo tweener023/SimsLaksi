@@ -96,7 +96,7 @@
       }
     ],
     "Accepted": true,
-    "Deleted": false
+    "Deleted": true
   },
   {
     "Code": "GFJ43212H41",
@@ -232,6 +232,6 @@
       }
     ],
     "Accepted": false,
-    "Deleted": false
+    "Deleted": true
   }
 ]

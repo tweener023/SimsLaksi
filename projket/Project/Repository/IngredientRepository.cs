@@ -1,8 +1,3 @@
-// File:    IngredientRepository.cs
-// Author:  User
-// Created: Thursday, June 17, 2021 4:58:15 PM
-// Purpose: Definition of Class IngredientRepository
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,18 +25,30 @@ namespace Repository
             return _objects;
         }
 
+        public List<Ingredient> SearchIngredient()
+        {
+            throw new NotImplementedException();
+        }
+
         public Ingredient UpdateIngredient(Ingredient ingredientToUpdate)
         {
             ReadJson();
-            int index = _objects.FindIndex(obj => obj.Name == ingredientToUpdate.Name);
-            _objects[index] = ingredientToUpdate;
+            int indeks = _objects.FindIndex(obj => obj.Name == ingredientToUpdate.Name);
+            _objects[indeks] = ingredientToUpdate;
             WriteToJson();
             return ingredientToUpdate;
         }
 
-        public List<Ingredient> SearchIngredient()
+        public Ingredient GetByName(string ingredientName)
         {
-            throw new NotImplementedException();
+            ReadJson();
+            return _objects.Find(obj => obj.Name == ingredientName);
+        }
+
+        private void WriteToJson()
+        {
+            string json = JsonConvert.SerializeObject(_objects, Formatting.Indented);
+            File.WriteAllText(_fileLocation, json);
         }
 
         private void ReadJson()
@@ -51,24 +58,14 @@ namespace Repository
                 File.Create(_fileLocation).Close();
             }
 
-            StreamReader r = new StreamReader(_fileLocation);
+            StreamReader streamReader = new StreamReader(_fileLocation);
 
-            string json = r.ReadToEnd();
+            string json = streamReader.ReadToEnd();
             if (json != "")
             {
                 _objects = JsonConvert.DeserializeObject<List<Ingredient>>(json);
             }
         }
 
-        private void WriteToJson()
-        {
-            string json = JsonConvert.SerializeObject(_objects, Formatting.Indented);
-            File.WriteAllText(_fileLocation, json);
-        }
-        public Ingredient GetByName(string ingredientName)
-        {
-            ReadJson();
-            return _objects.Find(obj => obj.Name == ingredientName);
-        }
     }
 }

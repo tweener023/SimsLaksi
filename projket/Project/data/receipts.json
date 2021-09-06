@@ -102,5 +102,27 @@
     "MedQtyString": "Brufen: 1",
     "Price": 12.43,
     "UserJmbg": "1"
+  },
+  {
+    "Id": 99,
+    "Pharmacist": "Apotekarko Apotekarkovic",
+    "DateAndTime": "06.39.2021.",
+    "MedQty": {
+      "Brufen": 1
+    },
+    "MedQtyString": "Brufen: 1",
+    "Price": 12.43,
+    "UserJmbg": "1"
+  },
+  {
+    "Id": 88,
+    "Pharmacist": "Apotekarko Apotekarkovic",
+    "DateAndTime": "07.57.2021.",
+    "MedQty": {
+      "Brufen": 1
+    },
+    "MedQtyString": "Brufen: 1",
+    "Price": 12.43,
+    "UserJmbg": "1"
   }
 ]

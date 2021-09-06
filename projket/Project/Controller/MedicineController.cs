@@ -1,8 +1,3 @@
-// File:    MedicineController.cs
-// Author:  User
-// Created: Saturday, June 12, 2021 11:51:07 AM
-// Purpose: Definition of Class MedicineController
-
 using System;
 using System.Collections.Generic;
 using Model;

@@ -1,8 +1,3 @@
-// File:    ReceiptRepository.cs
-// Author:  User
-// Created: Thursday, June 17, 2021 4:58:15 PM
-// Purpose: Definition of Class ReceiptRepository
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,18 +20,6 @@ namespace Repository
             ReadJson();
         }
 
-        public void CreateReceipt(Receipt receipt)
-        {
-            _objects.Add(receipt);
-            WriteToJson();
-        }
-
-        public List<Receipt> GetByUserJmbg(string userJmbg)
-        {
-            ReadJson();
-            return _objects.FindAll(obj => obj.UserJmbg == userJmbg);
-        }
-
         private void ReadJson()
         {
             if (!File.Exists(_fileLocation))
@@ -52,11 +35,22 @@ namespace Repository
                 _objects = JsonConvert.DeserializeObject<List<Receipt>>(json);
             }
         }
+        public void CreateReceipt(Receipt receipt)
+        {
+            _objects.Add(receipt);
+            WriteToJson();
+        }
 
         private void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(_objects, Formatting.Indented);
             File.WriteAllText(_fileLocation, json);
+        }
+
+        public List<Receipt> GetByUserJmbg(string userJmbg)
+        {
+            ReadJson();
+            return _objects.FindAll(obj => obj.UserJmbg == userJmbg);
         }
     }
 }
