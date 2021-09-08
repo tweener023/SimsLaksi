@@ -1,0 +1,128 @@
+[
+  {
+    "Id": 1,
+    "Pharmacist": "Neki apotekar",
+    "DateAndTime": "11.04.2020.",
+    "MedQty": {
+      "Brufen": 1,
+      "Skopril": 3
+    },
+    "MedQtyString": "Brufen: 1\n Skopril: 3",
+    "Price": 44.5,
+    "UserJmbg": "1"
+  },
+  {
+    "Id": 2,
+    "Pharmacist": "Neki drugi apotekar",
+    "DateAndTime": "11.04.2020.",
+    "MedQty": {
+      "Brufen": 1,
+      "Skopril": 3,
+      "Kofein tablete": 17
+    },
+    "MedQtyString": "Brufen: 1\n Skopril: 3\n, Kofein tablete: 17",
+    "Price": 64.12,
+    "UserJmbg": "1"
+  },
+  {
+    "Id": 3,
+    "Pharmacist": "Neki apotekar",
+    "DateAndTime": "11.04.2020.",
+    "MedQty": {
+      "Brufen": 1,
+      "Skopril": 3
+    },
+    "MedQtyString": "Brufen: 1\n Skopril: 3",
+    "Price": 11.5,
+    "UserJmbg": "28403214809324"
+  },
+  {
+    "Id": 12,
+    "Pharmacist": "apotekarko Apotekarkovic",
+    "DateAndTime": "01.12.2021.",
+    "MedQty": {
+      "Brufen": 2,
+      "Nfdsaf": 4
+    },
+    "MedQtyString": "",
+    "Price": 14.1,
+    "UserJmbg": "1"
+  },
+  {
+    "Id": 12,
+    "Pharmacist": "apotekarko Apotekarkovic",
+    "DateAndTime": "01.12.2021.",
+    "MedQty": {
+      "Brufen": 2,
+      "Nfdsaf": 4
+    },
+    "MedQtyString": "",
+    "Price": 14.1,
+    "UserJmbg": "1"
+  },
+  {
+    "Id": 12,
+    "Pharmacist": "apotekarko Apotekarkovic",
+    "DateAndTime": "01.12.2021.",
+    "MedQty": {
+      "Brufen": 2,
+      "Nfdsaf": 4
+    },
+    "MedQtyString": "",
+    "Price": 14.1,
+    "UserJmbg": "1"
+  },
+  {
+    "Id": 12,
+    "Pharmacist": "apotekarko Apotekarkovic",
+    "DateAndTime": "01.12.2021.",
+    "MedQty": {
+      "Brufen": 2
+    },
+    "MedQtyString": "",
+    "Price": 14.1,
+    "UserJmbg": "1"
+  },
+  {
+    "Id": 12,
+    "Pharmacist": "apotekarko Apotekarkovic",
+    "DateAndTime": "01.12.2021.",
+    "MedQty": {},
+    "MedQtyString": "",
+    "Price": 14.1,
+    "UserJmbg": "1"
+  },
+  {
+    "Id": 42,
+    "Pharmacist": "Apotekarko Apotekarkovic",
+    "DateAndTime": "05.00.2021.",
+    "MedQty": {
+      "Brufen": 1
+    },
+    "MedQtyString": "Brufen: 1",
+    "Price": 12.43,
+    "UserJmbg": "1"
+  },
+  {
+    "Id": 99,
+    "Pharmacist": "Apotekarko Apotekarkovic",
+    "DateAndTime": "06.39.2021.",
+    "MedQty": {
+      "Brufen": 1
+    },
+    "MedQtyString": "Brufen: 1",
+    "Price": 12.43,
+    "UserJmbg": "1"
+  },
+  {
+    "Id": 88,
+    "Pharmacist": "Apotekarko Apotekarkovic",
+    "DateAndTime": "07.57.2021.",
+    "MedQty": {
+      "Brufen": 1
+    },
+    "MedQtyString": "Brufen: 1",
+    "Price": 12.43,
+    "UserJmbg": "1"
+  }
+]

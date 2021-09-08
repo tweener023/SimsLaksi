@@ -1,0 +1,27 @@
+﻿[
+  {
+    "name": "sicilijum-dioksid",
+    "description": "pesak",
+    "countInMedicines": 2
+  },
+  {
+    "name": "magnezijum",
+    "description": "magnezijum iz prirodnih izvora",
+    "countInMedicines": 2
+  },
+  {
+    "name": "kalcijum",
+    "description": "kalcijum iz prirodnih izvora",
+    "countInMedicines": 4
+  },
+  {
+    "name": "taurin",
+    "description": "sranje iz energetskih pica",
+    "countInMedicines": 1
+  },
+  {
+    "name": "kofein",
+    "description": "super stvar",
+    "countInMedicines": 2
+  }
+]

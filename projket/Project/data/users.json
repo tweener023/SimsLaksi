@@ -1,0 +1,47 @@
+[
+  {
+    "Jmbg": "1",
+    "Email": "marko@email.com",
+    "Password": "abc",
+    "FirstName": "Marko",
+    "LastName": "Markovic",
+    "Phone": "+564456465",
+    "UserType": 0
+  },
+  {
+    "Jmbg": "2",
+    "Email": "fdafsdfsd@email.com",
+    "Password": "abc",
+    "FirstName": "fdsafads",
+    "LastName": "fdafs",
+    "Phone": "+564456465",
+    "UserType": 1
+  },
+  {
+    "Jmbg": "3",
+    "Email": "pharmacist@email.com",
+    "Password": "abc",
+    "FirstName": "Apotekar",
+    "LastName": "Apotekarkovic",
+    "Phone": "+564456465",
+    "UserType": 2
+  },
+  {
+    "Jmbg": "111",
+    "Email": "seselj@gmail.com",
+    "Password": "2323",
+    "FirstName": "seselj",
+    "LastName": "seselj33",
+    "Phone": "333",
+    "UserType": 0
+  },
+  {
+    "Jmbg": "123",
+    "Email": "nikolajsatara99@gmail.com",
+    "Password": "nini",
+    "FirstName": "Nikolaj",
+    "LastName": "Satara",
+    "Phone": "08181818",
+    "UserType": 0
+ 
+]
